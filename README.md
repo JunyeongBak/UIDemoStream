@@ -48,12 +48,27 @@ UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
 
 |위치|[Details] - Default - Input Type|[Details] - Gamepad - Gamepad Name|[Details] - Gamepad - Gamepad Display Name|[Details] - Gamepad - Gamepad Platform Name|
 |:---:|:---:|:---:|:---:|:---:|
-|ControllerData_PC_keyboard|Mouse and keyboard|NA|NA|
+|ControllerData_PC_keyboard|Mouse and keyboard|NA|NA|NA|
 |ControllerData_PC_gamepad|Gamepad|Generic|Gamepad|Windows|
 
 4. Common input data blueprint <br/>
  * UI/Data - [Create basic asset] - [Blueprint Class] - CommonUIInputData "DemoGameInputData"
    * 뒤로가기와 클릭 설정
      * DataTable과 RowName 설정(Confirm, Cancel)
+       * DataTable: InputActionTable
+       * RowName: Confirm, Cancel 선택 
  * [Project Settings] - [Game] - Common Input Settings
-   * Input Data: DemoGameInputData
+   * Input - Input Data: DemoGameInputData
+   * Platform Input - Windows
+     * Controller Data
+       * ControllerData_PC_keyboard
+       * ControllerData_PC_gamepad  
+
+5. styling assets <br/>
+  * UI/Data 경로 Styling 폴더 추가
+    *  [Create basic asset] - [Blueprint Class] - CommonBorderStyle "BorderStyle_DemoGameGenericBorder"
+    *  [Create basic asset] - [Blueprint Class] - CommonButtonStyle "ButtonStyle_DemoGameGenericButton"
+    *  [Create basic asset] - [Blueprint Class] - CommonTextStyle "TextStyle_DemoGameGenericMenuText"
+  * Content drawer에서 Settings - Show enging content 체크하면 글꼴 보임
+  * 표준 UMG 설명 ...
+   
