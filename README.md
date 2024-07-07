@@ -70,5 +70,8 @@ UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
     *  [Create basic asset] - [Blueprint Class] - CommonButtonStyle "ButtonStyle_DemoGameGenericButton"
     *  [Create basic asset] - [Blueprint Class] - CommonTextStyle "TextStyle_DemoGameGenericMenuText"
   * Content drawer에서 Settings - Show enging content 체크하면 글꼴 보임
-  * 표준 UMG 설명 ...
-   
+  * 표준 UMG 설명 ... 
+
+6. Don't use the canvas panel <br/>
+  * canvas는 연산량이 많아서 최소한으로 사용해야 한다.
+  * overlay 사용하면 여러 요소들을 하위에 둘 수 있다.
