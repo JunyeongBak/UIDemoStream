@@ -47,7 +47,7 @@ UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
   * Icons폴더
 
 |위치|[Details] - Default - Input Type|[Details] - Gamepad - Gamepad Name|[Details] - Gamepad - Gamepad Display Name|[Details] - Gamepad - Gamepad Platform Name|
-|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|
 |ControllerData_PC_keyboard||||
 |ControllerData_PC_gamepad|Gamepad|Generic|Gamepad|Windows|
 
