@@ -22,5 +22,5 @@ Youtube UI DEMO || https://youtu.be/TTB5y-03SnE?list=PLUJEyvnin-qMKP4gs-oZ9bMl4-
   * ContentDrawer에서 {Maps, Blueprint, UI} 폴더 추가
   * Maps폴더 DemoGameFrontend level 추가
   * UI폴더 {Data, Icons} 폴더 추가
-  * UI/Data 경로에 [Create advanced] - [asset Miscellaneous] - [Data Asset] - CommonInputActionDataBase 선택하고 "InputActionTable" 추가(UI에서 인식할 수 있는 모든 입력 작업을 포함하는 입력 작업 데이터)
+  * UI/Data 경로에 [Create advanced] - [asset Miscellaneous] - [Data table] - CommonInputActionDataBase 선택하고 "InputActionTable" 추가(UI에서 인식할 수 있는 모든 입력 작업을 포함하는 입력 작업 데이터)
   * 
