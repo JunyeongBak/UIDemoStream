@@ -82,10 +82,20 @@ UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
   * overlay
     * Common Activatable Widget Stack(build menu stack) "MenuStack"
       * Menustack fill horizontally, fill vertically
-      * common activatable widget stack "PromptStack"
-        * [Graph] - add custom event "PushMenu"
-        * [Graph] - add custom event "PushPrompt"
-  * que에 대해서도 공부
+      * [Graph] - 우클릭 add custom event "PushMenu"
+      * [Graph] - 우클릭 add custom event "PushPrompt"
+      * 그래프 52분 55초
+        * VARIABLES - MenuStack - GetMenuStack
+          * 드래그 push widget추가
+          * PushMenu 우측화살표와 pushwidget 좌측화살표 연결
+          * PushMenu 《activatable Widget Class》 push widget
+        * VARIABLES - PromptStack - GetMenuStack
+          * 드래그 push widget추가
+          * PushPrompt 우측화살표와 pushwidget 좌측화살표 연결
+  
+    * common activatable widget stack "PromptStack" 팝업 모달창 연관
+      
+  * queue에 대해서도 공부
 
 ## 8. StackCommonWidget <br/>
   * 
