@@ -78,7 +78,14 @@ UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
 7. Don't use the canvas panel <br/>
   * canvas는 연산량이 많아서 최소한으로 사용해야 한다.
   * overlay 사용하면 여러 요소들을 하위에 둘 수 있다.
-  * UI폴더 [create basic asset] - [blueprint class] - CommonActivatableWidget
+  * UI폴더 [create basic asset] - [blueprint class] - CommonActivatableWidget "UI_Base"
+  * overlay
+    * Common Activatable Widget Stack(build menu stack) "MenuStack"
+      * Menustack fill horizontally, fill vertically
+      * common activatable widget stack "PromptStack"
+        * [Graph] - add custom event "PushMenu"
+        * [Graph] - add custom event "PushPrompt"
+    * que에 대해서도 공부
 
 8. StackCommonWidget <br/>
   * 
