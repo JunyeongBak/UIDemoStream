@@ -85,7 +85,7 @@ UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
       * common activatable widget stack "PromptStack"
         * [Graph] - add custom event "PushMenu"
         * [Graph] - add custom event "PushPrompt"
-    * que에 대해서도 공부
+  * que에 대해서도 공부
 
 8. StackCommonWidget <br/>
   * 
