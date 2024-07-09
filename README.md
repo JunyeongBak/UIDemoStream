@@ -67,7 +67,14 @@ UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
 ## 5. styling assets <br/>
   * UI/Data 경로 Styling 폴더 추가
     *  [Create basic asset] - [Blueprint Class] - CommonBorderStyle "BorderStyle_DemoGameGenericBorder"
+      * [Background] - Tint 색 변경(Hex linear 090502FF, Hex sRGB 362815FF)   
     *  [Create basic asset] - [Blueprint Class] - CommonButtonStyle "ButtonStyle_DemoGameGenericButton"
+      * 텍스트 등록 시 c++ 수준이나 그와 유사한 수준(blueprint?)에서 등록해줘야한다. 그러므로 지금은 builtin 스타일로 진행
+      * 아래 컬러 등록은 연습용이라서 사용! 실제로는 이미지로 함.
+      * [Normal Base] - Tint 색 변경 (Hex Linear 2E2E1FFF, Hex sRGB7676662FF)
+      * [Normal Hovered] - Tint 색 변경 (Hex Linear FFC400FF, Hex sRGB FFE300FF)
+      * [Normal Pressed] - Tint 색 변경 (Hex Linear 010108FF, Hex sRGB 090A31FF)
+      * [Disabled] - Tint 색 변경(Hex Linear 1B1B1BFF, Hex sRGB 5B5B5BFF)
     *  [Create basic asset] - [Blueprint Class] - CommonTextStyle "TextStyle_DemoGameGenericMenuText"
   * Content drawer에서 Settings - Show enging content 체크하면 글꼴 보임
   * 표준 UMG 설명 ... [create advanced asset] - [User Interface] TestUser
@@ -90,8 +97,6 @@ UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
           * 드래그 push widget추가
           * PushMenu 우측화살표와 pushwidget 좌측화살표 연결
           * PushMenu 《activatable Widget Class》 push widget
-
-  
     * common activatable widget stack "PromptStack" 팝업 모달창 연관
       * VARIABLES - PromptStack - GetMenuStack
         * 드래그 push widget추가
@@ -100,3 +105,31 @@ UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
 
 ## 9. CommonButtonBase <br/>
   * [CREATE BASIC ASSET] - [Blueprint Class] CommonActivatableWidget "UI_MainMenu"
+  * [CREATE BASIC ASSET] - [Blueprint Class] CommonButtonBase "UI_Generic_Button"
+    * Overlay 추가
+    * [UI_Generic_Button] - [Details] - [Style] - ButtonStyle_DemoGameGenericButton
+    * 뷰포트 우측 상단 Width 250, Height 60
+    * Common Text 추가 가운데 정렬
+    * Is Variable 체크하기 "DisplayedText"
+      * 드래그 위젯의 set Text 추가
+        * Event Pre Construct 우측화살표와 SetText 좌측 화살표 연결
+        * DisplayedText와 Target 연결
+        * ButtonText와 In Text 연결
+    * [Graph] - [VARIABLES] - Text 추가 "ButtonText"
+      * VARIABLES의 Name 상수 문자열
+      * VARIABLES의 String 동적 문자열
+      * VARIABLES의 Text localize텍스트, [Tools] - Localization Dashboard
+      * Default Value 쪽의 플래그 눌러서 localize 셋팅한다.
+    * [Selection] - selectable은 라디오버튼이나 체크박스 사용 할 때 쓴다.
+
+## 10. MainMenu <br/>
+  * [UI_MainMenu] - Overlay 추가
+    * Vertical Box 추가(vertical fill 적용, bottom padding 추가) 
+      * spacer 추가 (상단 padding) 
+      * UI_Generic_Button 추가 "NewGameButton"
+      * UI_Generic_Button 추가 "ContinueButton"
+      * UI_Generic_Button 추가 "OptionsButton"
+      * Spacer 추가 후 size fill 적용
+      * UI_Generic_Button 추가 "QuitGameButton"
+      * spacer 추가 (하단 padding)
+    * [Vertical Box] - [Wrap With..] - Common Border
