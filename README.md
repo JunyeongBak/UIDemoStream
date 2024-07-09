@@ -173,4 +173,7 @@ Youtube UI DEMO || https://youtu.be/TTB5y-03SnE?list=PLUJEyvnin-qMKP4gs-oZ9bMl4-
       * Event On Activated 추가
         * Get DesiredFocus Target, Set Focus 추가
           * Event On Activated 우측화살표를 Set Focus 좌측에 연결
-          * Get Desired Focus Target을 Set Focus Target에 연결 
+          * Get Desired Focus Target을 Set Focus Target에 연결
+      * Add Custom Event 추가 "SetPromptInfo"
+        * Inputs 추가 "InPromptText" Text Type
+        * delegate binding하면, c++ code에서 편리하게 할 수 있다고 합니다.
