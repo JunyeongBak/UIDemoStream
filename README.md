@@ -92,10 +92,10 @@ UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
           * PushMenu 《activatable Widget Class》 push widget
 
   
-      * common activatable widget stack "PromptStack" 팝업 모달창 연관
-        * VARIABLES - PromptStack - GetMenuStack
-          * 드래그 push widget추가
-          * PushPrompt 우측화살표와 pushwidget 좌측화살표 연결
+    * common activatable widget stack "PromptStack" 팝업 모달창 연관
+      * VARIABLES - PromptStack - GetMenuStack
+        * 드래그 push widget추가
+        * PushPrompt 우측화살표와 pushwidget 좌측화살표 연결
     * common activatable widget queue에 대해서도 공부
 
 ## 9. CommonButtonBase <br/>
