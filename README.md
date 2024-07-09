@@ -76,6 +76,7 @@ UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
    * [Settings] - Plugins common ui editor에 블루프린트 클래스추가
 
 ## 7. Don't use the canvas panel <br/>
+## 8. StackCommonWidget <br/>
   * canvas는 연산량이 많아서 최소한으로 사용해야 한다.
   * overlay 사용하면 여러 요소들을 하위에 둘 수 있다.
   * UI폴더 [create basic asset] - [blueprint class] - CommonActivatableWidget "UI_Base"
@@ -96,9 +97,6 @@ UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
     * common activatable widget stack "PromptStack" 팝업 모달창 연관
       
   * queue에 대해서도 공부
-
-## 8. StackCommonWidget <br/>
-  * 7번 내용
 
 ## 9. CommonButtonBase <br/>
   * [CREATE BASIC ASSET] - [Blueprint Class] CommonActivatableWidget "UI_MainMenu"
