@@ -1,6 +1,5 @@
 # UIDemoStream
 Youtube UI DEMO || https://youtu.be/TTB5y-03SnE?list=PLUJEyvnin-qMKP4gs-oZ9bMl4-1INEVIi<br/>
-UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
 
 17:30 Required engine settings setup <br/>
 21:00 Setup data table for input actions <br/>
@@ -52,17 +51,17 @@ UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
 |ControllerData_PC_gamepad|Gamepad|Generic|Gamepad|Windows|
 
 ## 4. Common input data blueprint <br/>
- * UI/Data - [Create basic asset] - [Blueprint Class] - CommonUIInputData "DemoGameInputData"
-   * 뒤로가기와 클릭 설정
-     * DataTable과 RowName 설정(Confirm, Cancel)
-       * DataTable: InputActionTable
-       * RowName: Confirm, Cancel 선택 
- * [Project Settings] - [Game] - Common Input Settings
-   * Input - Input Data: DemoGameInputData
-   * Platform Input - Windows
-     * Controller Data
-       * ControllerData_PC_keyboard
-       * ControllerData_PC_gamepad  
+  * UI/Data - [Create basic asset] - [Blueprint Class] - CommonUIInputData "DemoGameInputData"
+    * 뒤로가기와 클릭 설정
+      * DataTable과 RowName 설정(Confirm, Cancel)
+        * DataTable: InputActionTable
+        * RowName: Confirm, Cancel 선택 
+  * [Project Settings] - [Game] - Common Input Settings
+    * Input - Input Data: DemoGameInputData
+    * Platform Input - Windows
+      * Controller Data
+        * ControllerData_PC_keyboard
+        * ControllerData_PC_gamepad  
 
 ## 5. styling assets <br/>
   * UI/Data 경로 Styling 폴더 추가
@@ -80,7 +79,7 @@ UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
   * 표준 UMG 설명 ... [create advanced asset] - [User Interface] TestUser
 
 ## 6. UI
-   * [Settings] - Plugins common ui editor에 블루프린트 클래스추가
+  * [Settings] - Plugins common ui editor에 블루프린트 클래스추가
 
 ## 7. Don't use the canvas panel <br/>
 ## 8. StackCommonWidget <br/>
@@ -133,3 +132,19 @@ UE AI with Behavior || Trees https://www.youtube.com/watch?v= iY1jnFvHgbE
       * UI_Generic_Button 추가 "QuitGameButton"
       * spacer 추가 (하단 padding)
     * [Vertical Box] - [Wrap With..] - Common Border
+
+## 11. PlayerController <br/>
+  * [Blueprint] 폴더 - [Create Basic asset] - [Blueprint Class] - [Player Controller] "FrontEndPlayerController"
+    * [Event Graph] - [Create Widget]
+      * class: UI Base 선택
+      * owning Player: self
+      * return value 드래그 Add to Viewport 추가
+        * create widget 우측 화살표를 좌측에 연결
+        * 우측 화살표를 드래그 push menu 추가(좌측에 연결)
+          * Activatable Widget class: UI Main Menu선택
+  * [Blueprint] 폴더 - [Create Basic asset] - [Blueprint Class] - [Game Mode Base]
+    * [Event Graph] - [Classes] - [PlayerController Class] FrontendPlayerController 선택
+  * [World Settings] - [Selected GameMode] FrontEndGameMode 선택
+  
+## 12. MainMenu (Graph) <br/>
+  * 
