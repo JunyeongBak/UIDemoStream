@@ -147,4 +147,30 @@ Youtube UI DEMO || https://youtu.be/TTB5y-03SnE?list=PLUJEyvnin-qMKP4gs-oZ9bMl4-
   * [World Settings] - [Selected GameMode] FrontEndGameMode 선택
   
 ## 12. MainMenu (Graph) <br/>
-  * 
+  * [Event On Activated] 추가
+    * 우측화살표 드래그, Set Focus 추가
+      * Get Desired Focus Target 추가, Target에 연결
+        * [FUNCTIONS] - Get Desired Focus Target(override)
+          * [VARIABLES] NewGameButton을 Return Value에 연결
+    * [ProjectSettings] - [CommonInputSettings] - Default Input Type을 gamepad로 하게되면, 기본으로 호버링 기능이 작동.
+      * 다만, 키보드로 메뉴를 조작하는 경우에, 호버링이 작동하지 않는다.(Custom Event 만든 후 UpdateButtonHoverState???)
+
+## 13. Create Generic Prompt <br/>
+  * 레이아웃은 좋은 레퍼런스를 찾아야한다.
+  * [UI] 폴더 - [Create Basic asset] - [Blueprint Class] - [CommonActivatableWidget] 추가 "UI_GenericPrompt"
+    * Overlay
+      * Vertical Box(H,V 중앙정렬, v fill)
+        * Common Border (Style - BorderStyle_DemoGameGenericBorder 확인)
+          * Vertical Box(버티컬 중앙에 모달 창이 오도록 레이아웃)
+            * Common Text "PromptText"
+            * Horizontal Box
+              * UI Generic Button "YesButton"
+              * Spacer
+              * UI Generic Button "NoButton"
+    * [Graph] 작업
+      * [Function] - Get Desired Focus Target 
+        * YesButton 추가, Return Value 연결
+      * Event On Activated 추가
+        * Get DesiredFocus Target, Set Focus 추가
+          * Event On Activated 우측화살표를 Set Focus 좌측에 연결
+          * Get Desired Focus Target을 Set Focus Target에 연결 
