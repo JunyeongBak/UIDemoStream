@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>법령 노트 정리</title>
   <style>
+    #embedded-pdf{
+      width: 100vw;
+      height: 100vh;
+      border: none;
+    }
+
     body {
         font-family: sans-serif, 'Malgun Gothic', 'Apple SD Gothic Neo';
         line-height: 1.6;
@@ -545,7 +551,7 @@
           <ul>
             법 제9조에 따른 철도운영자등의 안전관리체계 승인의 취소 또는 업무의 제한ㆍ정지 등의 처분기준은 별표 1과 같다.
           </ul>
-          <a href="./table_2_1.pdf" target="_blank">[별표1] 바로보기</a>
+          <embed id="embedded-pdf" src="./table_2_1.pdf" type="application/pdf">
         </div>
       </div>
     </div>
@@ -579,5 +585,16 @@
     <div class="law-section">
       <h2>제9장 벌칙</h2>
     </div>
+    <script>
+    function resizeEmbed() {
+      const embedElement = document.getElementById('embedded-pdf');
+      embedElement.style.width = window.innerWidth - 180 + 'px';
+      embedElement.style.height = window.innerHeight + 'px';
+    }
+
+    // 페이지 로드 시와 창 크기 변경 시 리사이즈 함수 호출
+    window.onload = resizeEmbed;
+    window.addEventListener('resize', resizeEmbed);
+    </script>
   </body>
 </html>
