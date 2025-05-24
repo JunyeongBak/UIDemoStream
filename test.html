@@ -551,9 +551,7 @@
           <ul>
             법 제9조에 따른 철도운영자등의 안전관리체계 승인의 취소 또는 업무의 제한ㆍ정지 등의 처분기준은 별표 1과 같다.
           </ul>
-          <div id="newContent">
-
-          </div>
+          <a href="./attachedtable_XXO_001_1.html" target="_blank">새 탭에서 열기</a>
         </div>
       </div>
     </div>
@@ -587,20 +585,5 @@
     <div class="law-section">
       <h2>제9장 벌칙</h2>
     </div>
-    <script>
-      fetch('attachedtable_XXO_001_1.html')
-        .then(response => response.text())
-        .then(html => {
-          const iframe = document.createElement('iframe');
-          iframe.srcdoc = html;
-          iframe.width = '98%';
-          iframe.height = '400px';
-          iframe.style.border = 'none';
-          document.getElementById('newContent').appendChild(iframe);
-        })
-        .catch(error => {
-            console.error('새로운 HTML 파일을 불러오는 데 실패했습니다:', error);
-        });
-    </script>
   </body>
 </html>
