@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>신호현시방식</title>
+  <style>
+    body {
+      font-family: 'Malgun Gothic', sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 700px;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 0 auto;
+      table-layout: auto;
+    }
+
+    th,
+    td {
+      border: 2px solid #333;
+      padding: 10px;
+      text-align: center;
+      vertical-align: middle;
+      font-weight: 500;
+    }
+
+    .header {
+      background-color: #e8e8e8;
+      font-weight: bold;
+    }
+
+    .category {
+      background-color: #f0f0f0;
+      font-weight: bold;
+      width: 120px;
+    }
+
+    .signal-type {
+      background-color: white;
+      min-width: 150px;
+    }
+
+    .small-text {
+      font-size: 12px;
+      line-height: 1.3;
+    }
+
+    /* 모바일 반응형 */
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+        margin: 10px;
+      }
+
+      h1 {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      table {
+        font-size: 11px;
+        min-width: 600px;
+        table-layout: auto;
+      }
+
+      th,
+      td {
+        padding: 6px 4px;
+      }
+
+      .small-text {
+        font-size: 9px;
+      }
+
+      .category {
+        width: 80px;
+      }
+    }
+
+    /* 스크롤바 스타일링 */
+    .table-wrapper::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .table-wrapper::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 4px;
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>신호현시방식</h1>
+    <div class="table-wrapper">
+      <table>
+        <tr>
+          <td rowspan="2" class="category">종류</td>
+          <td colspan="2" class="header">신호현시방식</td>
+        </tr>
+        <tr>
+          <td class="header">주간</td>
+          <td colspan="2" class="header">야간</td>
+        </tr>
+        <tr>
+          <td class="category">서행신호</td>
+          <td class="signal-type">백색테두리를 한 등황색 원판</td>
+          <td class="signal-type">등황색등 또는 반사재</td>
+        </tr>
+        <tr>
+          <td class="category">서행예고신호</td>
+          <td class="signal-type">흑색삼각형 3개를 그린<br>백색삼각형</td>
+          <td class="signal-type">흑색삼각형 3개를 그린<br>백색등 또는 반사재</td>
+        </tr>
+        <tr>
+          <td class="category">서행해제신호</td>
+          <td class="signal-type">백색테두리를 한 녹색원판</td>
+          <td class="signal-type">녹색등 또는 반사재</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

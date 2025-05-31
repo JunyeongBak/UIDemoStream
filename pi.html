@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파이(π)의 발견과 계산</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            margin: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .title {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .pi-symbol {
+            font-size: 4em;
+            color: #FFD700;
+            text-align: center;
+            margin: 20px 0;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+        
+        .section {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .circle-demo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .circle-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+        
+        .circle {
+            width: 200px;
+            height: 200px;
+            border: 4px solid #FFD700;
+            border-radius: 50%;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            animation: rotate 10s linear infinite;
+        }
+        
+        .diameter-line {
+            position: absolute;
+            top: 150px;
+            left: 50px;
+            width: 200px;
+            height: 2px;
+            background: #FF6B35;
+            z-index: 10;
+        }
+        
+        .circumference-demo {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 628px;
+            height: 4px;
+            background: linear-gradient(to right, #FFD700 0%, #FFD700 31.4%, #FF6B35 31.4%, #FF6B35 62.8%, #FFD700 62.8%, #FFD700 94.2%, #FF6B35 94.2%, #FF6B35 100%);
+            border-radius: 2px;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin: 20px 0;
+            align-items: center;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #FFD700;
+        }
+        
+        .timeline-date {
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            min-width: 120px;
+            text-align: center;
+            margin-right: 20px;
+        }
+        
+        .timeline-content {
+            flex: 1;
+        }
+        
+        .method-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .method-card:hover {
+            transform: translateY(-5px);
+            border-color: #FFD700;
+        }
+        
+        .interactive-demo {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .polygon-demo {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+        }
+        
+        .polygon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid #FFD700;
+            transition: all 0.5s ease;
+        }
+        
+        .slider-container {
+            margin: 20px 0;
+        }
+        
+        .slider {
+            width: 80%;
+            height: 8px;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.3);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #FFD700;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .pi-calculation {
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .modern-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .method-card-modern {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .accuracy-demo {
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 10px;
+            line-height: 1.8;
+        }
+        
+        .digit {
+            display: inline-block;
+            padding: 2px 4px;
+            margin: 1px;
+            border-radius: 3px;
+            background: rgba(255,215,0,0.2);
+            transition: background 0.3s ease;
+        }
+        
+        .digit:hover {
+            background: rgba(255,215,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">파이(π)의 놀라운 발견 여정 🔍</h1>
+        
+        <div class="pi-symbol">π = 3.14159265358979...</div>
+        
+        <div class="section">
+            <h2>🎯 파이란 무엇인가?</h2>
+            <div class="circle-demo">
+                <div class="circle-container">
+                    <div class="circle"></div>
+                    <div class="diameter-line"></div>
+                    <div style="position: absolute; top: 140px; right: -80px; background: rgba(255,255,255,0.9); color: #333; padding: 5px 10px; border-radius: 5px; font-weight: bold;">지름</div>
+                    <div style="position: absolute; top: 40px; left: -80px; background: rgba(255,255,255,0.9); color: #333; padding: 5px 10px; border-radius: 5px; font-weight: bold;">둘레</div>
+                    <div class="circumference-demo"></div>
+                    <div style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,0.9); color: #333; padding: 5px 10px; border-radius: 5px; font-weight: bold;">둘레를 펼친 모습</div>
+                </div>
+            </div>
+            
+            <div class="pi-calculation">
+                π = 원의 둘레 ÷ 지름 = C ÷ d
+            </div>
+            
+            <p style="font-size: 1.2em; text-align: center; line-height: 1.6;">
+                어떤 원이든 상관없이 <strong>둘레를 지름으로 나누면 항상 같은 값</strong>이 나와요!<br>
+                이 신비한 상수가 바로 π(파이)입니다.
+            </p>
+        </div>
+        
+        <div class="section">
+            <h2>📜 파이 발견의 역사</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">기원전 2000년</div>
+                    <div class="timeline-content">
+                        <h3>🏺 고대 바빌로니아</h3>
+                        <p>π ≈ 3.125로 추정. 점토판에 기록된 최초의 π 근사값!</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">기원전 250년</div>
+                    <div class="timeline-content">
+                        <h3>🏛️ 아르키메데스</div>
+                        <p>정다각형 방법으로 π를 3.1408 < π < 3.1429로 계산. 놀라운 정확도!</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">5세기</div>
+                    <div class="timeline-content">
+                        <h3>🇨🇳 중국 수학자 조충지</h3>
+                        <p>π ≈ 355/113 = 3.1415929... 소수점 6자리까지 정확!</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">1761년</div>
+                    <div class="timeline-content">
+                        <h3>🧮 람베르트</h3>
+                        <p>π가 무리수임을 증명. 무한히 계속되는 소수!</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">현재</div>
+                    <div class="timeline-content">
+                        <h3>💻 컴퓨터 시대</h3>
+                        <p>100조 자리까지 계산! 슈퍼컴퓨터가 쉬지 않고 계산 중...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🔬 파이를 계산하는 방법들</h2>
+            
+            <div class="method-card">
+                <h3>1️⃣ 아르키메데스 방법 (정다각형)</h3>
+                <p>원에 내접하고 외접하는 정다각형의 둘레로 π를 근사</p>
+                
+                <div class="interactive-demo">
+                    <div class="polygon-demo">
+                        <div id="polygon" class="polygon"></div>
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 200px; height: 200px; border: 2px dashed rgba(255,255,255,0.5); border-radius: 50%;"></div>
+                    </div>
+                    <div class="slider-container">
+                        <label>다각형 변의 수: <span id="sidesValue">6</span></label>
+                        <input type="range" min="3" max="50" value="6" class="slider" id="sidesSlider">
+                    </div>
+                    <div id="polygonResult" style="font-size: 1.2em; font-weight: bold; color: #FFD700;"></div>
+                </div>
+            </div>
+            
+            <div class="method-card">
+                <h3>2️⃣ 라이프니츠 급수 (무한급수)</h3>
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; margin: 10px 0;">
+                    π/4 = 1 - 1/3 + 1/5 - 1/7 + 1/9 - 1/11 + ...
+                </div>
+                <p>무한히 더하면 π에 수렴! (하지만 매우 느림)</p>
+            </div>
+            
+            <div class="method-card">
+                <h3>3️⃣ 몬테카를로 방법 (확률론적)</h3>
+                <p>정사각형 안에 원을 그리고 랜덤하게 점을 찍어서 π를 추정</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <button onclick="runMonteCarlo()" style="background: linear-gradient(135deg, #27ae60, #2ecc71); border: none; color: white; padding: 10px 20px; border-radius: 8px; font-size: 1.1em; cursor: pointer;">몬테카를로 시뮬레이션 실행</button>
+                    <div id="monteCarloResult" style="margin-top: 10px; font-size: 1.2em; font-weight: bold; color: #FFD700;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🚀 현대의 π 계산</h2>
+            <div class="modern-methods">
+                <div class="method-card-modern">
+                    <h3>🧮 라마누잔 공식</h3>
+                    <p>천재 수학자 라마누잔이 발견한 극도로 빠른 수렴 공식</p>
+                    <div style="font-size: 0.9em; color: #FFD700;">매 항마다 8자리씩 정확해짐!</div>
+                </div>
+                
+                <div class="method-card-modern">
+                    <h3>💻 차우드노프스키 알고리즘</h3>
+                    <p>현재 가장 빠른 π 계산 방법</p>
+                    <div style="font-size: 0.9em; color: #FFD700;">매 항마다 14자리씩 정확해짐!</div>
+                </div>
+                
+                <div class="method-card-modern">
+                    <h3>🔥 슈퍼컴퓨터</h3>
+                    <p>구글, 일본 후지쯔 등에서 경쟁적으로 π 자릿수 기록 갱신</p>
+                    <div style="font-size: 0.9em; color: #FFD700;">현재 기록: 100조 자리!</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🎯 π의 정확도 발전</h2>
+            <div class="accuracy-demo">
+                <div style="font-size: 1.2em; margin-bottom: 15px; color: #FFD700;">π = 3.1415926535897932384626433832795...</div>
+                <div style="line-height: 2;">
+                    <div>고대 바빌로니아: <span style="color: #FF6B35;">3.125</span></div>
+                    <div>이집트: <span style="color: #FF6B35;">3.1604</span></div>
+                    <div>아르키메데스: <span style="color: #27ae60;">3.1416</span></div>
+                    <div>조충지: <span style="color: #27ae60;">3.1415929</span></div>
+                    <div>현대 컴퓨터: <span style="color: #27ae60;">3.1415926535897932384626433832795...</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🤔 왜 π를 이렇게 많이 계산할까?</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                    <div style="font-size: 2em; text-align: center;">🔬</div>
+                    <h3>과학 연구</h3>
+                    <p>물리학, 공학, 천문학에서 정밀한 계산 필요</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                    <div style="font-size: 2em; text-align: center;">💻</div>
+                    <h3>컴퓨터 성능 테스트</h3>
+                    <p>슈퍼컴퓨터의 계산 능력을 측정하는 벤치마크</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                    <div style="font-size: 2em; text-align: center;">🧠</div>
+                    <h3>수학적 호기심</h3>
+                    <p>π의 신비로운 성질들을 탐구</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pi-calculation" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+            <div style="font-size: 1.5em; margin-bottom: 10px;">🌟 핵심 정리</div>
+            π는 원의 기본 성질에서 나온 자연스러운 상수<br>
+            인류가 4000년 넘게 계속 연구하고 있는 신비한 수<br>
+            완벽한 값은 영원히 알 수 없지만, 점점 더 정확해지고 있어요!
+        </div>
+    </div>
+
+    <script>
+        // 다각형 시각화
+        const sidesSlider = document.getElementById('sidesSlider');
+        const sidesValue = document.getElementById('sidesValue');
+        const polygon = document.getElementById('polygon');
+        const polygonResult = document.getElementById('polygonResult');
+
+        function updatePolygon() {
+            const sides = parseInt(sidesSlider.value);
+            sidesValue.textContent = sides;
+            
+            // 정다각형 둘레로 π 근사 계산
+            const apothem = 100; // 원의 반지름
+            const sideLength = 2 * apothem * Math.tan(Math.PI / sides);
+            const perimeter = sides * sideLength;
+            const piApprox = perimeter / (2 * apothem);
+            
+            polygonResult.textContent = `π ≈ ${piApprox.toFixed(6)} (오차: ${Math.abs(piApprox - Math.PI).toFixed(6)})`;
+            
+            // 다각형 그리기
+            const points = [];
+            for (let i = 0; i < sides; i++) {
+                const angle = (2 * Math.PI * i) / sides;
+                const x = 100 + 80 * Math.cos(angle);
+                const y = 100 + 80 * Math.sin(angle);
+                points.push(`${x},${y}`);
+            }
+            
+            polygon.style.clipPath = `polygon(${points.join(' ')})`;
+            polygon.style.width = '200px';
+            polygon.style.height = '200px';
+            polygon.style.background = 'rgba(255, 215, 0, 0.3)';
+        }
+
+        sidesSlider.addEventListener('input', updatePolygon);
+        updatePolygon();
+
+        // 몬테카를로 시뮬레이션
+        function runMonteCarlo() {
+            const iterations = 100000;
+            let insideCircle = 0;
+            
+            for (let i = 0; i < iterations; i++) {
+                const x = Math.random() * 2 - 1; // -1 to 1
+                const y = Math.random() * 2 - 1; // -1 to 1
+                
+                if (x * x + y * y <= 1) {
+                    insideCircle++;
+                }
+            }
+            
+            const piApprox = 4 * insideCircle / iterations;
+            const error = Math.abs(piApprox - Math.PI);
+            
+            document.getElementById('monteCarloResult').textContent = 
+                `π ≈ ${piApprox.toFixed(6)} (오차: ${error.toFixed(6)})`;
+        }
+    </script>
+</body>
+</html>
