@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>PDF 링크 테스트</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 16px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <script type="text/javascript">
+    /**
+     * Android 네이티브 코드로 PDF 뷰어 실행을 요청하는 함수입니다.
+     * @param {string} pdfAssetPath - assets 폴더 내의 PDF 파일 경로 (예: 'pdfs/sample.pdf')
+     */
+    function openPdfInNativeViewer(pdfAssetPath) {
+      // 'AndroidAppInterface'는 WebView에 등록된 JavaScript 인터페이스 객체 이름입니다.
+      // 'openPdfViewer'는 Android 코드에 정의된 메소드 이름입니다.
+      if (window.AndroidAppInterface && typeof window.AndroidAppInterface.openPdfViewer === 'function') {
+        window.AndroidAppInterface.openPdfViewer(pdfAssetPath);
+      } else {
+        console.error("AndroidAppInterface.openPdfViewer is not available.");
+        alert("PDF 뷰어 기능을 사용할 수 없습니다.");
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <h1>PDF 문서</h1>
+  <p>아래 링크를 클릭하여 PDF 문서를 확인하세요.</p>
+  <ul>
+    <!-- 
+            실제 assets/pdfs/ 폴더에 있는 PDF 파일명으로 경로를 수정해야 합니다.
+            예: 'pdfs/my_document.pdf', 'pdfs/user_guide.pdf' 
+        -->
+    <li><a href="#" onclick="openPdfInNativeViewer('pdfs/sample.pdf')">샘플 PDF 1 열기</a></li>
+    <li><a href="#" onclick="openPdfInNativeViewer('pdfs/another_guide.pdf')">다른 가이드 PDF 열기</a></li>
+  </ul>
+</body>
+
+</html>
