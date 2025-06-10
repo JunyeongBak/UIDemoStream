@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>언리얼 엔진 도커화 인터랙티브 가이드</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <!-- Chosen Palette: Tech Focus -->
+  <!-- Application Structure Plan: 이 SPA는 선형적인 보고서를 비선형적이고 탐색 가능한 학습 도구로 재설계했습니다. 핵심 구조는 상단의 '프로세스 개요'로, 사용자가 전체 흐름을 먼저 파악하고 원하는 단계를 클릭하여 상세 내용으로 이동할 수 있게 합니다. 각 단계는 독립된 섹션으로 구성되며, 특히 Dockerfile 섹션은 각 줄마다 설명이 나타나는 상호작용형 컴포넌트로 구현하여 복잡한 코드의 이해도를 높였습니다. 다단계 빌드(Multi-stage build) 개념은 텍스트 대신 시각적인 다이어그램으로 표현하여 직관성을 극대화했습니다. 이 구조는 사용자가 정보를 수동적으로 읽는 대신, 능동적으로 탐색하고 학습하도록 유도하여 교육적 효과와 사용자 경험을 향상시키기 위해 선택되었습니다. -->
+  <!-- Visualization & Content Choices: 보고서의 절차적 정보를 효과적으로 전달하기 위해, 정량 데이터 차트 대신 프로세스를 시각화하는 데 중점을 뒀습니다. [프로세스 개요 -> 인터랙티브 스텝퍼(HTML/JS) -> 클릭 시 해당 섹션으로 스크롤], [Dockerfile 설명 -> 인터랙티브 코드 블록(HTML/JS) -> 클릭 시 설명 표시], [다단계 빌드 개념 -> 시각적 다이어그램(HTML/CSS)], [Docker 명령어 -> 인터랙티브 툴팁(HTML/JS) -> 옵션에 마우스 오버 시 설명 표시]. 이 방식들은 복잡한 텍스트 정보를 시각적이고 상호작용이 가능한 조각으로 분해하여 사용자의 인지 부하를 줄이고 이해를 돕기 위해 채택되었습니다. Chart.js는 요구사항에 따라 포함되었으나 본 내용에 정량 데이터가 없어 실제 차트 렌더링에는 사용되지 않았습니다. -->
+  <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+  <style>
+    body {
+      font-family: 'Noto Sans KR', 'Inter', sans-serif;
+      background-color: #f8fafc;
+      /* slate-50 */
+    }
+
+    .step-item.active {
+      background-color: #4f46e5;
+      /* indigo-600 */
+      color: white;
+      border-color: #4f46e5;
+    }
+
+    .step-item.active .step-circle {
+      background-color: white;
+      color: #4f46e5;
+    }
+
+    .step-line {
+      height: 2px;
+      background-color: #e5e7eb;
+      /* gray-200 */
+    }
+
+    .dockerfile-line {
+      transition: background-color 0.2s ease-in-out;
+      cursor: pointer;
+    }
+
+    .dockerfile-line:hover {
+      background-color: #eef2ff;
+      /* indigo-50 */
+    }
+
+    .dockerfile-line.selected {
+      background-color: #e0e7ff;
+      /* indigo-200 */
+    }
+
+    /* 스크롤 애니메이션을 부드럽게 */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* 툴팁 스타일 */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      border-bottom: 1px dotted #374151;
+      /* gray-700 */
+      cursor: help;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 250px;
+      background-color: #1f2937;
+      /* gray-800 */
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 8px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -125px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .tooltip .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #1f2937 transparent transparent transparent;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800">
+
+  <div class="container mx-auto max-w-5xl p-4 sm:p-6 lg:p-8">
+
+    <!-- Hero Section -->
+    <header class="text-center mb-12">
+      <h1 class="text-4xl sm:text-5xl font-bold text-slate-900 mb-2">언리얼 엔진 서버 도커화</h1>
+      <p class="text-lg text-slate-600">인터랙티브 가이드</p>
+    </header>
+
+    <!-- Process Overview Section -->
+    <section id="process-overview" class="mb-16">
+      <h2 class="text-2xl font-bold mb-6 text-center">전체 프로세스 개요</h2>
+      <div id="stepper" class="flex items-center justify-between">
+        <!-- Step items will be injected by JS -->
+      </div>
+    </section>
+
+    <!-- Dynamic Content Sections -->
+    <main id="sections-container" class="space-y-20">
+      <!-- Sections will be injected by JS -->
+    </main>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const steps = [
+        { id: 'prep', title: '사전 준비', icon: '🛠️' },
+        { id: 'build', title: '서버 빌드', icon: '📦' },
+        { id: 'dockerfile', title: 'Dockerfile 작성', icon: '📝' },
+        { id: 'image', title: '이미지 생성', icon: '🖼️' },
+        { id: 'run', title: '컨테이너 실행', icon: '🚀' }
+      ];
+
+      const sectionsData = {
+        prep: {
+          title: '1단계: 사전 준비',
+          content: `
+                        <p class="mb-6 text-slate-600">도커 이미지를 만들기 전, 언리얼 엔진 프로젝트가 데디케이티드 서버로 빌드될 수 있도록 몇 가지 준비가 필요합니다. 이 단계는 전체 과정의 기초를 다지는 중요한 과정입니다.</p>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                                <h3 class="font-bold text-lg mb-2 text-indigo-700">언리얼 엔진 소스 코드 빌드</h3>
+                                <p>에픽게임즈 런처에서 설치한 엔진보다, GitHub에서 직접 소스 코드를 받아 빌드한 엔진을 사용하는 것이 좋습니다. Linux 서버용 빌드나 커스텀 빌드 등 더 넓은 범위의 제어가 가능해지기 때문입니다. 이는 필수 사항은 아니지만, 전문적인 서버 운영 환경에서는 권장되는 방식입니다.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                                <h3 class="font-bold text-lg mb-2 text-indigo-700">데디케이티드 서버 타겟 추가</h3>
+                                <p>프로젝트를 '서버' 모드로 빌드하도록 명시적인 설정 파일이 필요합니다. 프로젝트 소스 폴더에 <code>[ProjectName]Server.Target.cs</code> 파일을 추가하여, 빌드 시스템이 서버 빌드를 인식하고 올바르게 처리하도록 해야 합니다.</p>
+                            </div>
+                        </div>
+                    `
+        },
+        build: {
+          title: '2단계: 데디케이티드 서버 빌드',
+          content: `
+                        <p class="mb-6 text-slate-600">프로젝트 준비가 끝나면, 도커 컨테이너의 기반이 될 Linux 환경에서 실행 가능한 서버 파일을 패키징(빌드)해야 합니다.</p>
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                            <h3 class="font-bold text-lg mb-2 text-indigo-700">Linux 서버 패키징</h3>
+                            <p class="mb-4">언리얼 에디터의 '플랫폼' 메뉴에서 빌드 타겟을 'Linux'로 선택한 후 '프로젝트 패키징'을 실행합니다. 이 과정은 다소 시간이 소요될 수 있습니다.</p>
+                            <p class="mb-4">빌드가 성공적으로 완료되면, 출력 폴더에 <code>LinuxServer</code> 라는 이름의 폴더가 생성됩니다. 이 폴더 안에는 서버 실행에 필요한 모든 파일(실행 파일, 에셋 데이터 등)이 포함되어 있습니다. 이 폴더 전체가 도커 이미지의 핵심 재료가 됩니다.</p>
+                            <div class="bg-slate-100 p-4 rounded-md text-sm text-slate-700">
+                                <p><strong>결과물 예시:</strong> <code>/MyProject/Saved/StagedBuilds/LinuxServer/</code></p>
+                            </div>
+                        </div>
+                    `
+        },
+        dockerfile: {
+          title: '3단계: Dockerfile 작성',
+          content: `
+                        <p class="mb-6 text-slate-600">Dockerfile은 도커 이미지를 만들기 위한 '설계도'입니다. 이 텍스트 파일에 이미지를 만드는 데 필요한 모든 명령어를 순서대로 기록합니다. 아래는 다단계 빌드(Multi-stage build)를 활용한 효율적인 Dockerfile 예시입니다. 각 라인을 클릭하여 상세 설명을 확인해보세요.</p>
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <div class="bg-gray-800 text-white font-mono text-sm p-4 rounded-lg overflow-x-auto">
+                                <pre id="dockerfile-code" class="whitespace-pre-wrap"></pre>
+                            </div>
+                            <div id="dockerfile-explanation" class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                                <h3 class="font-bold text-lg mb-2 text-indigo-700">Dockerfile 라인 설명</h3>
+                                <p class="text-slate-500">왼쪽 코드에서 궁금한 라인을 클릭하세요.</p>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mt-12 mb-4 text-center">다단계 빌드(Multi-stage build) 개념도</h3>
+                        <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+                            <div class="bg-blue-100 p-6 rounded-lg shadow w-full md:w-2/5 border border-blue-200">
+                                <h4 class="font-bold text-blue-800">1. 빌드 환경 (Builder)</h4>
+                                <p class="text-sm text-blue-700">무거운 빌드 도구 포함</p>
+                                <div class="mt-4 bg-white p-4 rounded">
+                                    <p>프로젝트 소스 코드</p>
+                                    <p class="text-xs text-slate-500">+ 언리얼 엔진</p>
+                                    <p class="text-xs text-slate-500">+ 컴파일러 등</p>
+                                </div>
+                            </div>
+                            <div class="text-4xl font-bold text-indigo-500 my-4 md:my-0">→</div>
+                             <div class="bg-green-100 p-6 rounded-lg shadow w-full md:w-2/5 border border-green-200">
+                                <h4 class="font-bold text-green-800">2. 최종 실행 환경</h4>
+                                <p class="text-sm text-green-700">가볍고 효율적인 최종 이미지</p>
+                                <div class="mt-4 bg-white p-4 rounded">
+                                    <p>빌드된 서버 실행 파일</p>
+                                    <p class="text-xs text-slate-500">(빌드 도구 없음)</p>
+                                </div>
+                            </div>
+                        </div>
+                    `
+        },
+        image: {
+          title: '4단계: 도커 이미지 생성',
+          content: `
+                        <p class="mb-6 text-slate-600">작성된 Dockerfile을 바탕으로 실제 도커 이미지를 빌드합니다. 이 명령어는 프로젝트의 루트 폴더(Dockerfile이 있는 위치)에서 실행해야 합니다.</p>
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                            <h3 class="font-bold text-lg mb-2 text-indigo-700">docker build 명령어</h3>
+                            <p class="mb-4">터미널을 열고 아래 명령어를 실행하면, 도커는 Dockerfile의 내용을 순서대로 실행하며 이미지를 만듭니다. 이 과정은 프로젝트의 크기와 컴퓨터 사양에 따라 수 분에서 수 시간이 걸릴 수 있습니다.</p>
+                            <div class="bg-gray-800 text-white font-mono text-sm p-4 rounded-md">
+                                <span class="text-green-400">docker build</span> 
+                                <span class="tooltip text-cyan-400">-t my-unreal-server:latest<span class="tooltiptext">이미지에 '이름:태그' 형식으로 식별자를 부여합니다. 'my-unreal-server'는 이름, 'latest'는 태그(버전)입니다.</span></span> 
+                                <span class="tooltip text-yellow-400">.<span class="tooltiptext">현재 디렉토리(.)에 있는 Dockerfile을 사용하여 빌드하라는 의미입니다.</span></span>
+                            </div>
+                        </div>
+                    `
+        },
+        run: {
+          title: '5단계: 컨테이너 실행',
+          content: `
+                        <p class="mb-6 text-slate-600">이미지 생성이 완료되면, 그 이미지를 기반으로 컨테이너를 생성하고 실행할 수 있습니다. 이제 우리의 언리얼 엔진 서버가 도커 위에서 동작하게 됩니다.</p>
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                            <h3 class="font-bold text-lg mb-2 text-indigo-700">docker run 명령어</h3>
+                            <p class="mb-4">아래 명령어를 실행하면 'my-unreal-server:latest' 이미지를 기반으로 컨테이너가 생성되고, 데디케이티드 서버가 실행됩니다.</p>
+                             <div class="bg-gray-800 text-white font-mono text-sm p-4 rounded-md">
+                                <span class="text-green-400">docker run</span> 
+                                <span class="tooltip text-cyan-400">-p 7777:7777/udp<span class="tooltiptext">호스트(내 컴퓨터)의 7777번 UDP 포트를 컨테이너의 7777번 UDP 포트로 연결(매핑)합니다. 플레이어 접속을 위해 필수적입니다.</span></span> 
+                                <span class="tooltip text-purple-400">--name my-game-server<span class="tooltiptext">실행되는 컨테이너에 'my-game-server'라는 고유한 이름을 부여합니다. 관리가 용이해집니다.</span></span> 
+                                <span class="text-yellow-400">my-unreal-server:latest</span>
+                            </div>
+                            <p class="mt-6 text-slate-700">이제 플레이어는 당신의 컴퓨터 IP 주소와 7777 포트를 통해 이 도커 컨테이너에서 실행 중인 게임 서버에 접속할 수 있습니다. 파이썬 AI 서버 컨테이너와 함께 <span class="font-bold text-indigo-600">도커 컴포즈(Docker Compose)</span>로 묶어주면, 우리가 구상했던 완전한 아키텍처가 완성됩니다.</p>
+                        </div>
+                    `
+        }
+      };
+
+      const dockerfileContent = [
+        { line: '# --- 1단계: 빌드 환경 ---', explanation: '다단계 빌드의 첫 번째 단계를 정의합니다. 여기서는 무거운 빌드 도구들을 사용하여 프로젝트를 컴파일합니다.' },
+        { line: 'FROM unreal-engine-build-environment:latest AS builder', explanation: '언리얼 엔진 빌드에 필요한 모든 도구(엔진, 컴파일러 등)가 사전 설치된 베이스 이미지에서 시작합니다. AS builder는 이 단계를 "builder"라는 이름으로 명명합니다.' },
+        { line: '', explanation: '' },
+        { line: '# 프로젝트 소스 코드를 컨테이너 안으로 복사', explanation: '내 컴퓨터에 있는 프로젝트 파일 전체를 컨테이너 내부의 /project 디렉토리로 복사합니다.' },
+        { line: 'WORKDIR /project', explanation: '이후의 모든 명령어들이 실행될 컨테이너 내의 기본 작업 디렉토리를 /project로 설정합니다.' },
+        { line: 'COPY . .', explanation: '현재 로컬 디렉토리(.)의 모든 것을 컨테이너의 현재 작업 디렉토리(.)로 복사합니다.' },
+        { line: '', explanation: '' },
+        { line: '# 컨테이너 안에서 프로젝트를 빌드합니다.', explanation: '언리얼 엔진의 자동화 도구(RunUAT.sh)를 사용하여 Linux 서버용으로 프로젝트를 빌드, 쿡, 패키징합니다. 결과물은 /project/build 디렉토리에 저장됩니다.' },
+        { line: 'RUN /path/to/RunUAT.sh BuildCookRun \\', explanation: '' },
+        { line: '    -project="/project/MyGame.uproject" \\', explanation: '빌드할 프로젝트 파일을 지정합니다.' },
+        { line: '    -serverplatform=Linux -target=MyGameServer \\', explanation: '빌드 타겟을 Linux 플랫폼용 MyGameServer로 설정합니다.' },
+        { line: '    -build -cook -stage -pak -archive \\', explanation: '빌드, 쿡, 스테이지, 압축(pak), 아카이브 등 필요한 모든 빌드 과정을 실행하라는 옵션들입니다.' },
+        { line: '    -archivedirectory=/project/build', explanation: '최종 빌드 결과물을 저장할 디렉토리를 지정합니다.' },
+        { line: '', explanation: '' },
+        { line: '# --- 2단계: 최종 실행 환경 ---', explanation: '다단계 빌드의 두 번째, 최종 단계를 정의합니다. 여기서는 실제 서버 실행에 필요한 파일만 담아 이미지를 가볍게 만듭니다.' },
+        { line: 'FROM ubuntu:20.04', explanation: '가벼운 우분투 리눅스를 최종 실행 환경의 베이스 이미지로 사용합니다.' },
+        { line: '', explanation: '' },
+        { line: '# 빌드 결과물만 이전 단계에서 복사해옵니다.', explanation: '이전 "builder" 단계에서 생성된 빌드 결과물(/project/build/LinuxServer)만 현재 컨테이너의 /server 디렉토리로 복사합니다.' },
+        { line: 'WORKDIR /server', explanation: '작업 디렉토리를 /server로 설정합니다.' },
+        { line: 'COPY --from=builder /project/build/LinuxServer .', explanation: '--from=builder 플래그를 사용하여 다른 단계에서 파일을 가져옵니다. 이것이 다단계 빌드의 핵심입니다.' },
+        { line: '', explanation: '' },
+        { line: '# 게임 서버 포트를 외부로 노출합니다.', explanation: '컨테이너의 7777번 UDP 포트를 외부와 통신할 수 있도록 개방합니다. 언리얼 서버의 기본 포트입니다.' },
+        { line: 'EXPOSE 7777/udp', explanation: '' },
+        { line: '', explanation: '' },
+        { line: '# 컨테이너 시작 시 실행될 기본 명령어를 지정합니다.', explanation: '이 컨테이너가 시작될 때 자동으로 MyGameServer 실행 파일을 -log 옵션과 함께 실행하도록 설정합니다. -log 옵션은 서버 로그를 콘솔에 출력하게 하여 디버깅을 용이하게 합니다.' },
+        { line: 'CMD ["./MyGameServer", "-log"]', explanation: '' }
+      ];
+
+      const stepperContainer = document.getElementById('stepper');
+      const sectionsContainer = document.getElementById('sections-container');
+
+      // Create stepper and sections
+      steps.forEach((step, index) => {
+        const stepElement = document.createElement('a');
+        stepElement.href = `#section-${step.id}`;
+        stepElement.className = 'step-item flex flex-col items-center text-center cursor-pointer group w-1/5';
+        stepElement.dataset.stepId = step.id;
+        stepElement.innerHTML = `
+                    <div class="step-circle w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center font-bold text-lg text-gray-500 transition-all duration-300 group-hover:border-indigo-600 group-hover:text-indigo-600">${step.icon}</div>
+                    <p class="mt-2 text-sm font-medium text-slate-600 transition-all duration-300 group-hover:text-indigo-600">${step.title}</p>
+                `;
+
+        if (index < steps.length - 1) {
+          const line = document.createElement('div');
+          line.className = 'step-line flex-grow';
+          stepperContainer.appendChild(stepElement);
+          stepperContainer.appendChild(line);
+        } else {
+          stepperContainer.appendChild(stepElement);
+        }
+
+        // Create content sections
+        const sectionData = sectionsData[step.id];
+        const sectionWrapper = document.createElement('section');
+        sectionWrapper.id = `section-${step.id}`;
+        sectionWrapper.className = 'pt-10';
+        sectionWrapper.innerHTML = `
+                    <h2 class="text-3xl font-bold mb-8 border-l-4 border-indigo-500 pl-4">${sectionData.title}</h2>
+                    <div>${sectionData.content}</div>
+                `;
+        sectionsContainer.appendChild(sectionWrapper);
+      });
+
+      // Dockerfile interactive logic
+      if (document.getElementById('dockerfile-code')) {
+        const dockerfileCodeEl = document.getElementById('dockerfile-code');
+        const dockerfileExpEl = document.getElementById('dockerfile-explanation');
+        dockerfileContent.forEach((item, index) => {
+          const lineEl = document.createElement('div');
+          lineEl.className = 'dockerfile-line';
+          lineEl.innerHTML = `<span class="text-gray-500 w-6 inline-block">${index + 1}</span> ${item.line.replace(/ /g, '&nbsp;')}`;
+          if (item.explanation) {
+            lineEl.addEventListener('click', () => {
+              dockerfileExpEl.innerHTML = `<h3 class="font-bold text-lg mb-2 text-indigo-700">Line ${index + 1}</h3><p class="text-slate-600">${item.explanation}</p>`;
+              document.querySelectorAll('.dockerfile-line.selected').forEach(el => el.classList.remove('selected'));
+              lineEl.classList.add('selected');
+            });
+          }
+          dockerfileCodeEl.appendChild(lineEl);
+        });
+      }
+
+
+      // Intersection Observer for active step
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const sectionId = entry.target.id.replace('section-', '');
+            document.querySelectorAll('.step-item').forEach(stepEl => {
+              if (stepEl.dataset.stepId === sectionId) {
+                stepEl.classList.add('active');
+              } else {
+                stepEl.classList.remove('active');
+              }
+            });
+          }
+        });
+      }, { threshold: 0.3 });
+
+      document.querySelectorAll('#sections-container section').forEach(section => {
+        observer.observe(section);
+      });
+
+      // Initial active state for first step
+      const firstStep = document.querySelector('.step-item');
+      if (firstStep) firstStep.classList.add('active');
+
+    });
+  </script>
+</body>
+
+</html>
