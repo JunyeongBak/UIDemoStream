@@ -177,3 +177,17 @@ Youtube UI DEMO || https://youtu.be/TTB5y-03SnE?list=PLUJEyvnin-qMKP4gs-oZ9bMl4-
       * Add Custom Event 추가 "SetPromptInfo"
         * Inputs 추가 "InPromptText" Text Type
         * delegate binding하면, c++ code에서 편리하게 할 수 있다고 합니다.
+
+### HTML 
+  * Character	Escape Code	Description
+&	&amp;	Ampersand
+<	&lt;	Less-than sign
+>	&gt;	Greater-than sign
+"	&quot;	Double quotation mark
+'	&apos;	Single quotation mark
+©	&copy;	Copyright symbol
+®	&reg;	Registered trademark
+€	&euro;	Euro sign
+£	&pound;	Pound sign
+¥	&yen;	Yen sign
+공백 	&nbsp;	Non-breaking space

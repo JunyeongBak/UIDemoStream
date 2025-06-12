@@ -386,6 +386,37 @@
     .table-wrapper::-webkit-scrollbar-thumb:hover {
       background: #555;
     }
+        /* 정답 표시를 위한 CSS */
+    .correct-answer {
+        background-color: #ede05056; /* Tailwind red-500 */
+        font-weight: bold;
+    }
+
+    /* 질문 클릭 시 커서 모양 변경 */
+    .question-text {
+        cursor: pointer;
+    }
+
+    /* 버튼 스타일 */
+    .quiz-button {
+        padding: 0.5rem 1rem; /* px-4 py-2 */
+        background-color: #3b82f6; /* bg-blue-500 */
+        color: #ffffff; /* text-white */
+        border-radius: 0.375rem; /* rounded-md */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* simplified shadow-md */
+        transition: background-color 0.2s ease-in-out; /* transition-colors duration-200 */
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        line-height: 1.5; /* Default line-height for buttons */
+        display: inline-flex; /* To center text vertically if needed */
+        align-items: center;
+        justify-content: center;
+    }
+
+    .quiz-button:hover {
+        background-color: #2563eb; /* hover:bg-blue-600 */
+    }
   </style>
 </head>
 
@@ -412,6 +443,22 @@
         <li>이 규칙은 「철도안전법」 제39조의 규정에 의하여 <span class="highlight keyword">열차의 편성, 철도차량의 운전 및 신호방식 등 철도차량의 안전운행에</span> 관하여
           필요한 사항을 정함을 목적으로 한다.</li>
       </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제1조) 004</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+          <ul>
+            <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 철도차량운전규칙의 목적으로 맞는 것은?</li>
+            <ul class="option-list">
+              <li class="quiz-option">① 이 규칙은 「철도안전법」 제39조의 규정에 의하여 천도차량의 안전 및 운전방법을 정함을 목적으로 한다. </li>
+              <li class="quiz-option" data-correct="true">② 이 규칙은 「철도안전법」 제39조의 규정에 의하여 열차의 편성, 철도차량의 운전 및 신호방식 등 철도차량의
+                안전운행에 관하여 필요한 사항을 정함을 목적으로 한다.</li>
+              <li class="quiz-option">③ 이 규칙은 「철도안전법」 제39조의 규정에 의하여 열차의 조성, 열차운전 및 철도차량 신호방식에 관하여 필요한 사항을 정함을 목적으로 한다.
+              </li>
+              <li class="quiz-option">④ 이 규칙은 「철도안전법」 제39조의 규정에 의하여 열차의 편성, 열차의 운전 및 신호방식 등 열차의 안전운행에 관하여 필요한 사항을 정함을
+                목적으로 한다.</li>
+            </ul>
+          </ul>
     </div>
     <div class="law-article">
       <h3>제2조 (정의)</h3>
@@ -445,6 +492,61 @@
         </ol>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제2조) 001</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+          <ul>
+            <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 철도차량운전규칙의 정거장에 해당되지 않는 것은?</li>
+            <ul class="option-list">
+              <li class="quiz-option">① 여객의 승강(여객 이용시설 및 편의시설을 포함한다)</li>
+              <li class="quiz-option">② 화물의 적하</li>
+              <li class="quiz-option">③ 대비</li>
+              <li class="quiz-option" data-correct="true">④ 열차의 입환</li>
+            </ul>
+          </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제2조) 002</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+          <ul>
+            <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 철도차량운전규칙의 정의로 틀린 것은?</li>
+            <ul class="option-list">
+              <li class="quiz-option">① 폐색이라 함은 일정 구간에 동시에 2 이상의 열차를 운전시키지 아니하기 위하여 그 구간을 하나의 열차의 운전에만 점용시키는 것을 말한다.
+              </li>
+              <li class="quiz-option" data-correct="true">② 조차장이라 함은 열차의 입환 또는 조성을 위하여 사용되는 장소를 말한다.</li>
+              <li class="quiz-option">③ 신호소라 함은 상치신호기 등 열차제어 시스템을 조작ㆍ취급하기 위하여 설치한 장소를 말한다.</li>
+              <li class="quiz-option">④ 운전취급담당자란 철도 신호기ㆍ선로전환기 또는 조작판을 취급하는 사람을 말한다.</li>
+            </ul>
+          </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제2조) 003</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+          <ul>
+            <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 철도차량운전규적에서 사용하는 용어의 정의로 틀린 것은?</li>
+            <ul class="option-list">
+              <li class="quiz-option">① 본선이라 함은 열차의 운전에 상용하는 선로를 말한다.</li>
+              <li class="quiz-option">② 폐색이라 함은 일정 구간에 동시에 2 이상의 열차를 운전시키지 아니하기 위하여 그 구간을 하나의 열차의 운전에만 점용시키는 것을 말한다.
+              </li>
+              <li class="quiz-option">③ 철도신호라 함은 제76조의 규정에 의한 신호ㆍ전호 및 표지를 말한다.</li>
+              <li class="quiz-option" data-correct="true">④ 완급차라 함은 관통제동기용 제동통ㆍ압력계ㆍ차장변 및 관통제동기를 장치한 차량으로서 열차승무원이 집무할 수
+                있는 차실이 설비된 객차 또는 화차를 말한다.</li>
+            </ul>
+          </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제2조) 006</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+          <ul>
+            <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 신호소의 정의로 맞는 것은?</li>
+            <ul class="option-list">
+              <li class="quiz-option">① 상설신호기 등 열차제어시스템을 조작ㆍ취급하기 위하여 설치한 장소</li>
+              <li class="quiz-option">② 열차제어시스템을 조작ㆍ취급, 열차의 교차통행을 위하여 설치한 장소</li>
+              <li class="quiz-option">③ 상치신호기 등 열차제어시스템을 조작ㆍ취급 및 열차의 교행을 위하여 설치한 장소</li>
+              <li class="quiz-option" data-correct="true">④ 상치신호기 등 열차제어시스템을 조작ㆍ취급하기 위하여 설치한 장소</li>
+            </ul>
+          </ul>
+    </div>
     <div class="law-article">
       <h3>제3조 (적용범위)</h3>
       <ul>
@@ -470,6 +572,19 @@
         <li>철도운영자등은 열차 또는 차량을 운행함에 있어 철도사고를 예방하고 여객과 화물을 안전하고 원활하게 운송할 수 있도록 필요한 조치를 하여야 한다.</li>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제3조, 제4조, 제5조) 005</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 총칙에 대한 설명으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 철도에서의 철도차량의 운행에 관하여는 다른 법령에 특별한 규정이 있는 경우를 제외하고는 철도차량운전규칙이 정하는 바에 의한다.</li>
+          <li class="quiz-option">② 철도운영자등은 이 규칙에서 정하지 아니한 사항이나 지역별로 상이한 사항 등 열차운행의 안전관리 및 운영에 필요한 세부기준 및 절차를 이 규칙의 범위 안에서 따로 정할 수 있다.</li>
+          <li class="quiz-option">③ 철도운영자등은 다른 철도운영자등이 관리하는 구간에서 열차를 운행하려는 경우에는 다른 철도운영자 등과 사전에 협의하혀야 한다.</li>
+          <li class="quiz-option" data-correct="true">④ 철도운영자등은 열차 또는 차량을 운행함에 있어 철도사고를 복구하고 여객과 화물을 안전하고 원활하게 운송할 수 있도록 필요한 조치를 하여야 한다.</li>
+        </ul>
+      </ul>
+    </div>
   </div>
   <div class="law-section">
     <h2>제2장 철도종사자 등</h2>
@@ -493,12 +608,51 @@
         <li>③철도운영자등은 제2항의 규정에 의한 업무를 수행하는 자가 과로 등으로 인하여 당해 업무를 적절히 수행하기 어렵다고 판단되는 경우에는 그 업무를 수행하도록 하여서는 아니된다.</li>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제6조) 007</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 철도운영자등이 철도안전법등 관계 법령에 따라 필요한 교육을 실시하여야 하는 대상으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 여객승무원</li>
+          <li class="quiz-option">② 철도차량을 연결ㆍ분리하는 업무를 수행하는 사람</li>
+          <li class="quiz-option" data-correct="true">③ 정거장에서 열차의 조성업무를 수행하는 자</li>
+          <li class="quiz-option">④ 운전취급담당자</li>
+        </ul>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제6조) 008</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 철도운영자등은 운전업무종사자, 운전업무 보조자 및 여객승무원이 철도차량에 탑승하기 전 또는 철도차량의 운행중에 필요한 사항에 대한 보고ㆍ지시 또는 감독 등을 적절히 수행할 수 있도록 갖춰야 하는 것으로 다음 중 맞는 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 교육매뉴얼</li>
+          <li class="quiz-option" data-correct="true">② 안전관리체계</li>
+          <li class="quiz-option">③ 교육훈련체계</li>
+          <li class="quiz-option">④ 업무수행 매뉴얼</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제7조 (열차에 탑승하여야 하는 철도종사자)</h3>
       <ul>
         <li>①열차에는 운전업무종사자와 여객승무원을 탑승시켜야 한다. 다만, 해당 선로의 상태, 열차에 연결되는 차량의 종류, 철도차량의 구조 및 장치의 수준 등을 고려하여 열차운행의 안전에 지장이 없다고
           인정되는 경우에는 운전업무종사자 외의 다른 철도종사자를 탑승시키지 않거나 인원을 조정할 수 있다.</li>
         <li>② 제1항에도 불구하고 무인운전의 경우에는 운전업무종사자를 탑승시키지 않을 수 있다.</li>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제7조) 009</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 열차운행의 안전에 지장이 없다고 인정되는 경우에 운전업무종사자 외의 다른 철도종사자를 탑승시키지 않을 때 고려사항으로 맞는 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 해당 선로의 종류</li>
+          <li class="quiz-option">② 열차에 연결되는 차량의 구조</li>
+          <li class="quiz-option">③ 철도차량의 상태</li>
+          <li class="quiz-option" data-correct="true">④ 철도차량의 장치의 수준</li>
+        </ul>
       </ul>
     </div>
   </div>
@@ -512,6 +666,34 @@
         <li>③차량에는 차량한계(차량의 길이, 너비 및 높이의 한계를 말한다. 이하 이 조에서 같다)를 초과하여 화물을 적재ㆍ운송해서는 안 된다. 다만, 열차의 안전운행에 필요한 조치를 하는 경우에는
           차량한계를 초과하는 화물(이하 “특대화물”이라 한다)을 운송할 수 있다.</li>
         <li>④ 제1항부터 제3항까지의 규정에 따른 차량의 화물 적재 제한 등에 필요한 세부사항은 국토교통부장관이 정하여 고시한다.</li>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제8조) 010</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 &lt;보기&gt;를 뜻하는 단어로 맞는 것은?</li>
+        <li class="highlight">차량의 길이, 너비 및 높이의 한계</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 열차한계</li>
+          <li class="quiz-option">② 건축한계</li>
+          <li class="quiz-option" data-correct="true">③ 차량한계</li>
+          <li class="quiz-option">④ 특수한계</li>
+        </ul>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제8조) 011</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 &lt;보기&gt;가 설명하는 단어로 맞는 것은?</li>
+        <li class="highlight">차량한계를 초과하는 화물</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 대형화물</li>
+          <li class="quiz-option">② 특급화물</li>
+          <li class="quiz-option">③ 초과화물</li>
+          <li class="quiz-option" data-correct="true">④ 특대화물</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -530,6 +712,19 @@
         <li>열차의 최대연결차량수는 이를 조성하는 동력차의 견인력, 차량의 성능ㆍ차체(Frame) 등 차량의 구조 및 연결장치의 강도와 운행선로의 시설현황에 따라 이를 정하여야 한다.</li>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제10조) 012</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 열차의 최대 연결차량수에 영향을 끼치는 요인으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 동력차의 견인력</li>
+          <li class="quiz-option">② 차량의 성능ㆍ차체(Frame)</li>
+          <li class="quiz-option">③ 차량의 구조 및 연결장치의 강도</li>
+          <li class="quiz-option" data-correct="true">④ 운행선로의 선로상태</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제11조 (동력차의 연결위치)</h3>
       <ul>
@@ -544,12 +739,38 @@
         </ol>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제2조) 013</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 동력차의 연결위치를 달리할 수 있는 경우로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 기관차를 2 이상 연결한 경우로서 열차의 맨 앞에 위치한 기관차에서 열차를 제어하는 경우</li>
+          <li class="quiz-option">② 보조기관차를 사용하는 경우</li>
+          <li class="quiz-option">③ 선로 또는 열차에 고장이 있는 경우</li>
+          <li class="quiz-option" data-correct="true">④ 정거장과 그 정거장 외의 측선 도중에서 분기하는 본선과의 사이를 운전하는 경우</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제12조 (여객열차의 연결제한)</h3>
       <ul>
         <li>①여객열차에는 화차를 연결할 수 없다. 다만, <span class="keyword">회송</span>의 경우와 그 밖에 특별한 사유가 있는 경우에는 그러하지 아니하다.</li>
         <li>②제1항 단서의 규정에 의하여 화차를 연결하는 경우에는 화차를 객차의 중간에 연결하여서는 아니된다.</li>
         <li>③파손차량, 동력을 사용하지 아니하는 기관차 또는 2차량 이상에 무게를 부담시킨 화물을 적재한 화차는 이를 여객열차에 연결하여서는 아니된다.</li>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제12조) 014</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 여객열차의 연결제한에 대하여 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 여객열차에는 화차를 연결할 수 없다.</li>
+          <li class="quiz-option">② 다만, 회송의 경우와 그 밖에 특별한 사유가 있는 경우에는 그러하지 아니하다.</li>
+          <li class="quiz-option" data-correct="true">③ 화차를 연결하는 경우에는 화차를 객차 의 중간에 연결하여야 한다.</li>
+          <li class="quiz-option">④ 파손차량, 동력을 사용하지 아니하는 기관차 또는 2차량 이상에 무게를 부담시킨 화물을 적재한 화차는 이를 여객열차에 연결하여서는 아니된다.</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -569,6 +790,19 @@
         </ul>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제13조) 015</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 운전방향 맨 앞 차량의 운전실 외에서도 열차를 운전할 수 있는 경우로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option" data-correct="true">① 철도종사자가 차량의 맨 뒤에서 전호를 하는 경우로서 그 전호에 의하여 열차를 운전하는 경우</li>
+          <li class="quiz-option">② 철도시설 또는 철도차량을 시험하기 위하여 운전하는 경우</li>
+          <li class="quiz-option">③ 사전에 정한 특정한 구간을 운전하는 경우</li>
+          <li class="quiz-option">④ 무인운전을 하는 경우</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제14조 (열차의 제동장치)</h3>
       <ul>
@@ -581,6 +815,19 @@
         </ol>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제14조) 016</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 열차의 제동장치에 대한 설명으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 2량 이상의 차량으로 조성하는 열차에는 모든 차량에 연동하여 작용하고 차량이 분리되었을 때 자동으로 차량을 정차시킬 수 있는 제동장치를 구비하여야 한다.</li>
+          <li class="quiz-option" data-correct="true">② 구내운전을 하는 경우에는 제동장치를 구비하지 않아도 된다.</li>
+          <li class="quiz-option">③ 정거장에서 차량을 연결ㆍ분리하는 작업을 하는경우 제동장치를 구비하지 않아도 된다.</li>
+          <li class="quiz-option">④ 차량을 정지시킬 수 있는 인력을 배치한 구원열차 및 공사열차의 경우 제동장치를 구비하지 않아도 된다.</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제15조 (열차의 제동력)</h3>
       <ul>
@@ -591,11 +838,37 @@
           감속하여야 한다.</li>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제15조) 017</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 철도차량운전규칙의 정의로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 열차는 선로의 굴곡정도 및 운전속도에 따라 충분한 제동능력을 갖추어야 한다. </li>
+          <li class="quiz-option" data-correct="true">② 철도운영자등은 제동축비율이 0이되도록 열차를 조성하여야 한다. 다만, 긴급상황 발생 등으로 인하여 열차를 조성하는 경우 등 부득이한 사유가 있는 경우에는 그러하지 아니하다.</li>
+          <li class="quiz-option">③ 열차를 조성하는 경우에는 모든 차량의 제동력이 균등하도록 차량을 배치하여야 한다.</li>
+          <li class="quiz-option">④ 다만, 고장 등으로 인하여 일부 차량의 제동력이 작용하지 아니하는 경우에는 제동축비율에 따라 운전속도를 감속하여야 한다.</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제16조 (완급차의 연결)</h3>
       <ul>
         <li>①관통제동기를 사용하는 열차의 맨 뒤(추진운전의 경우에는 맨 앞)에는 완급차를 연결하여야 한다. 다만, 화물열차에는 완급차를 연결하지 아니할 수 있다.</li>
         <li>②제1항 단서의 규정에 불구하고 군전용열차 또는 위험물을 운송하는 열차 등 열차승무원이 반드시 탑승하여야 할 필요가 있는 열차에는 완급차를 연결하여야 한다.</li>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제16조) 018</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 완급차의 연결에 대한 내용으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 관통제동기를 사용하는 열차의 맨 뒤(추진운전의 경우에는 맨 앞)에는 완급차를 연결하여야 한다.</li>
+          <li class="quiz-option">② 다만, 화물열차에는 완급차를 연결하지 아니할 수 있다.</li>
+          <li class="quiz-option">③ 규정에 불구하고 군전용열차 또는 위험물을 운송하는 열차 등 열차승무원이 반드시 탑승하여야 할 필요가 있는 열차에는 완급차를 연결하여야 한다.</li>
+          <li class="quiz-option" data-correct="true">④ 이 경우 열차승무원은 열차의 방호업무를 하여야 한다.</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -636,6 +909,19 @@
         <li>③철도운영자등은 제2항의 규정에 의하여 반대선로로 운전하는 열차가 있는 경우 후속 열차에 대한 운행통제 등 필요한 안전조치를 하여야 한다.</li>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제20조) 019</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 지정된 선로의 반대선로로 열차를 운행할 수 있는 경우로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option" data-correct="true">① 정거장 외의 선로를 운전하는 경우</li>
+          <li class="quiz-option">② 선로 또는 열차의 시험을 위하여 운전하는 경우</li>
+          <li class="quiz-option">③ 퇴행운전을 하는 경우</li>
+          <li class="quiz-option">④ 양방향 신호설비가 설치된 구간에서 열차를 운전하는 경우</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제21조 (정거장외 본선의 운전)</h3>
       <ul>
@@ -654,6 +940,19 @@
         </ol>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제22조) 020</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 정거장 외에 열차가 정차하여도 되는 경우로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 경사도가 1000분의 30 이상인 급경사 구간에 진입하기 전의 경우</li>
+          <li class="quiz-option">② 정지신호의 현시가 있는 경우</li>
+          <li class="quiz-option">③ 철도사고등이 발생하거나 철도사고등의 발생 우려가 잇는 경우</li>
+          <li class="quiz-option" data-correct="true">④ 제동장치를 확인하는 경우</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제23조 (열차의 운행시각)</h3>
       <ul>
@@ -661,11 +960,37 @@
           아니하다.</li>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제23조) 021</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 열차를 운행할 때 철도운영자등이 정거장에서 정해야되는 시각으로 해당되지 않는 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 출발</li>
+          <li class="quiz-option">② 통과</li>
+          <li class="quiz-option" data-correct="true">③ 정차</li>
+          <li class="quiz-option">④ 도착</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제24조 (운전정리)</h3>
       <ul>
         <li>철도사고등의 발생 등으로 인하여 열차가 지연되어 열차의 운행일정의 변경이 발생하여 열차운행상 혼란이 발생한 때에는 열차의 종류ㆍ등급ㆍ목적지 및 연계수송 등을 고려하여 운전정리를 행하고,
           정상운전으로 복귀되도록 하여야 한다.</li>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제24조) 022</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 운전정리를 할 때 고려사항으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 열차의 종류</li>
+          <li class="quiz-option">② 열차의 등급</li>
+          <li class="quiz-option" data-correct="true">③ 열차의 도착지</li>
+          <li class="quiz-option">④ 연계수송</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -687,11 +1012,37 @@
         <li>②제1항 단서의 규정에 의하여 퇴행하는 경우에는 다른 열차 또는 차량의 운전에 지장이 없도록 조치를 취하여야 한다.</li>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제26조) 024</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 열차를 퇴행할 수 있는 경우로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 선로ㆍ전차선로 또는 차량에 고장이 있는 경우</li>
+          <li class="quiz-option">② 공사열차ㆍ구원열차 또는 제설열차가 작업상 퇴행할 필요가 있는 경우</li>
+          <li class="quiz-option" data-correct="true">③ 철도종사자가 차량의 맨 뒤에서 전호를 하는 경우로서 그 전호에 의하여 열차를 운전하는 경우</li>
+          <li class="quiz-option">④ 철도사고등의 발생 등 특별한 사유가 있는 경우</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제27조 (열차의 재난방지)</h3>
       <ul>
         <li>철도운영자등은 폭풍우ㆍ폭설ㆍ홍수ㆍ지진ㆍ해일 등으로 열차에 재난 또는 위험이 발생할 우려가 있는 경우에는 그 상황을 고려하여 열차운전을 일시 중지하거나 운전속도를 제한하는 등의 재난ㆍ위험방지
           조치를 강구해야 한다.</li>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제27조) 023</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 열차운전을 일시 중지하거나 운전속도를 제한할 수 있는 재난으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option" data-correct="true">① 악천후</li>
+          <li class="quiz-option">② 폭설</li>
+          <li class="quiz-option">③ 지진</li>
+          <li class="quiz-option">④ 해일</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -706,6 +1057,19 @@
           <li>다른 방향에서 진입하는 열차들이 출발신호기 또는 정차위치로부터 200미터(동차ㆍ전동차의 경우에는 150미터) 이상의 여유거리가 있는 경우</li>
           <li>동일방향에서 진입하는 열차들이 각 정차위치에서 100미터 이상의 여유거리가 있는 경우</li>
         </ol>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제28조) 025</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 열차를 동시에 정거장에 진입시키거나 진출시킬 수 있는 경우로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 안전측선ㆍ탈선선로전환기ㆍ탈선기가 설치되어 있는 경우</li>
+          <li class="quiz-option">② 열차를 유도하여 서행으로 진입시키는 경우</li>
+          <li class="quiz-option" data-correct="true">③ 보조기관차로 운행하는 열차를 진입시키는 경우</li>
+          <li class="quiz-option">④ 동일방향에서 진입하는 열차들이 각 정차위치에서 100미터 이상의 여유거리가 있는 경우</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -734,12 +1098,38 @@
           방호를 위한 정지수신호 등 안전조치를 취해야 한다.</li>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제31조) 027</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 구원열차 요구에 대한 내용으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 철도사고등의 발생으로 인하여 정거장 외에서 열차가 정차하여 구원열차를 요구하였거나 구원열차 운전의 통보가 있는 경우에는 당해 열차를 이동하여서는 아니된다.</li>
+          <li class="quiz-option">② 다만, 철도사고등이 확대될 염려가 있는 경우에는 열차를 이동할 수 있다.</li>
+          <li class="quiz-option">③ 다만, 응급작업을 수행하기 위하여 다른 장소로 이동이 필요한 경우에는 열차를 이동할 수 있다.</li>
+          <li class="quiz-option" data-correct="true">④ 철도종사자는 단서에 따라 열차나 철도차량을 이동시키는 경우에는 지체없이 구원열차의 철도운영자와 관제업무종사자 또는 운전취급담당자에게 그 이동 내용과 이동 사유를 통보하고, 열차의 방호를 위한 정지수신호 등 안전조치를 취해야 한다.</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제32조 (화재발생시의 운전)</h3>
       <ul>
         <li>①열차에 화재가 발생한 경우에는 조속히 소화의 조치를 하고 여객을 대피시키거나 화재가 발생한 차량을 다른 차량에서 격리시키는 등의 필요한 조치를 하여야 한다.</li>
         <li>②열차에 화재가 발생한 장소가 교량 또는 터널 안인 경우에는 우선 철도차량을 교량 또는 터널 밖으로 운전하는 것을 원칙으로 하고, 지하구간인 경우에는 가장 가까운 역 또는 지하구간 밖으로
           운전하는 것을 원칙으로 한다.</li>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제32조) 026</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 철도차량운전규칙의 내용으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 철도사고등이 발생하여 열차를 급히 정지시킬 필요가 있는 경우에는 지체없이 정지신호를 표시하는 등 열차정지에 필요한 조치를 취하여야 한다.</li>
+          <li class="quiz-option">② 선로의 개량 또는 보수 등으로 열차의 운행에 지장을 주는 작업 또는 공사가 시행중인 구간에는 열차를 진입시켜서는 아니된다.</li>
+          <li class="quiz-option">③ 열차에 화재가 발생한 경우에는 조속히 소화의 조치를 하고 여객을 대피시키거나 화재가 발생한 차량을 다른 차량에서 격리시키는 등의 필요한 조치를 하여야 한다.</li>
+          <li class="quiz-option" data-correct="true">④ 열차에 화재가 발생한 장소가 교량 또는 터널 안인 경우에는 우선 철도차량을 교량 또는 터널 밖으로 운전하는 것을 원칙으로 하고, 지하구간인 경우에는 즉시 정차하는 것을 원칙으로 한다.</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -760,6 +1150,19 @@
         </ol>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제32조의2) 028</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 열차를 무인운전 하는 경우 준수사항으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option" data-correct="true">① 철도운영자등이 지정한 철도종사자는 차량을 차고에서 출고하기 전 또는 무인운전 구간으로 진입하기 전에 운전방식을 무인운전 모드로 전환하고, 철도운영자로부터 무인운전 기능을 확인받을 것</li>
+          <li class="quiz-option">② 관제업무종사자는 열차의 운행상태를 실시간으로 감시하고 필요한 조치를 할 것</li>
+          <li class="quiz-option">③ 관제업무종사자는 열차가 정거장의 정지선을 지나쳐서 정차한 경우 후속 열차의 해당 정거장 진입 차단</li>
+          <li class="quiz-option">④ 철도운영자등은 여객의 승하차 시 안전을 확보하고 시스템 고장 등 긴급상황에 신속하게 대처하기 위하여 정거장 등에 안전요원을 배치하거나 순회하도록 할 것</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제33조 (특수목적열차의 운전)</h3>
       <ul>
@@ -778,6 +1181,32 @@
         </ol>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제34조) 029</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 열차를 안전한 속도로 운전하기 위하여 고려사항으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 선로 및 전차선로의 상태</li>
+          <li class="quiz-option">② 차량의 성능</li>
+          <li class="quiz-option" data-correct="true">③ 열차의 중량</li>
+          <li class="quiz-option">④ 신호의 조건</li>
+        </ul>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제34조) 030</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 철도운영자등이 선로의 노선별 및 차량의 종류별로 열차의 최고속도를 정하여 운용할 때 고려해야되는 사항이 아닌 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 선로의 굴곡의 정도</li>
+          <li class="quiz-option">② 선로전환기의 종류</li>
+          <li class="quiz-option" data-correct="true">③ 선로전환기의 형태</li>
+          <li class="quiz-option">④ 전차선에 대하여는 가설방법별 제한속도</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제35조 (운전방법 등에 의한 속도제한)</h3>
       <ul>
@@ -794,6 +1223,19 @@
           <li>무인운전 구간에서 운전업무종사자가 탑승하여 운전하는 경우</li>
           <li>그 밖에 철도안전을 위하여 필요하다고 인정되는 경우</li>
         </ol>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제35조) 031</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 열차 또는 차량의 운전제한속도를 따로 정하여 시행하여야 되는 경우로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 열차를 퇴행운전을 하는 경우</li>
+          <li class="quiz-option" data-correct="true">② 쇄정되지 아니한 선로전환기를 향하여 운전하는 경우</li>
+          <li class="quiz-option">③ 수신호 현시구간을 운전하는 경우</li>
+          <li class="quiz-option">④ 지령운전을 하는 경우</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -847,6 +1289,19 @@
         </ol>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제39조) 032</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 입환작업계획서에 포함되어야하는 사항으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 작업 내용</li>
+          <li class="quiz-option">② 대상 차량</li>
+          <li class="quiz-option" data-correct="true">③ 입환 작업 계획</li>
+          <li class="quiz-option">④ 작업자별 역할</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제40조 (선로전환기의 쇄정 및 정위치 유지)</h3>
       <ul>
@@ -854,6 +1309,20 @@
           경우에는 그러하지 아니하다.</li>
         <li>②쇄정되지 아니한 선로전환기를 대향으로 통과할 때에는 쇄정기구를 사용하여 텅레일(Tongue Rail)을 쇄정하여야 한다.</li>
         <li>③선로전환기를 사용한 후에는 지체없이 미리 정하여진 위치에 두어야 한다.</li>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제40조) 033</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 &lt;보기&gt; 괄호 안에 들어갈 말로 바르게 나열한 것으로 맞는 것은?</li>
+        <li class="highlight">철도차량운전규칙에서 쇄정되지 아니한 선로전환기를 (&nbsp;&nbsp;&nbsp;&nbsp;)으로 통과할 때에는<br>쇄정기구를 사용하여 (&nbsp;&nbsp;&nbsp;&nbsp;)을(를) 쇄정하여야 한다.</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 배향, 텅레일</li>
+          <li class="quiz-option">② 배향, 가드레일</li>
+          <li class="quiz-option" data-correct="true">③ 대향, 텅레일</li>
+          <li class="quiz-option">④ 대향, 가드레일</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -884,6 +1353,19 @@
       <h3>제45조 (인력입환)</h3>
       <ul>
         <li>본선을 이용하는 입력입환은 관제업무종사자 또는 운전취급담당자의 승인을 받아야 하며, 운전취급담당자는 그 작업을 감시해야 한다.</li>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제45조) 034</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 입환에 대한 내용으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 다른 열차가 정거장에 진입할 시각이 임박한 때에는 다른 열차에 지장을 줄 수 있는 입환을 할 수 없다. 다만, 다른 열차가 진입할 수 없는 경우 등 긴급하거나 부득이한 경우에는 그러하지 아니하다.</li>
+          <li class="quiz-option">② 열차의 도착 시각이 임박한 때에는 그 열차가 정차 예정인 선로에서는 입환을 할 수 없다. 다만, 열차의 운전에 지장을 주지 아니하도록 안전조치를 한 후에는 그러하지 아니하다.</li>
+          <li class="quiz-option">③ 다른 열차가 인접정거장 또는 신호소를 출발한 후에는 그 열차에 대한 장내신호기의 바깥쪽에 걸친 입환을 할 수 없다. 다만, 특별한 사유가 있는 경우로서 충분한 안전조치를 한 때에는 그러하지 아니하다.</li>
+          <li class="quiz-option" data-correct="true">④ 본선을 이용하는 인력입환은 관제업무종사자 또는 운전취급담당자의 승인을 받아야 하며, 입환작업자는 그 작업을 감시하여야 한다.</li>
+        </ul>
       </ul>
     </div>
   </div>
@@ -941,6 +1423,19 @@
         </ol>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제49조) 035</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 한 폐색구간에 둘 이상의 열차를 동시에 운행할 수 있는 경우로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option" data-correct="true">① 구원열차, 공사열차 또는 제설열차를 운전하는 경우</li>
+          <li class="quiz-option">② 폐색구간에서 뒤의 보조기관차를 열차로부터 떼었을 경우</li>
+          <li class="quiz-option">③ 열차가 정차되어 있는 폐색구간으로 다른 열차를 유도하는 경우</li>
+          <li class="quiz-option">④ 폐색에 의한 방법으로 운전을 하고 있는 열차를 열차제어장치로 운전하거나 시계운전이 가능한 노선에서 열차를 서행하여 운전하는 경우</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제50조 (폐색방식의 구분)</h3>
       <ul>
@@ -949,6 +1444,19 @@
           <li>상용(常用)폐색방식 : 자동폐색식ㆍ연동폐색식ㆍ차내신호폐색식ㆍ통표폐색식</li>
           <li>대용(代用)폐색방식: 통신식ㆍ지도통신식ㆍ지도식ㆍ지령식</li>
         </ol>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제50조) 036</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 대용폐색방식에 해당되지 않는 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 통신식</li>
+          <li class="quiz-option" data-correct="true">② 통표폐색식</li>
+          <li class="quiz-option">③ 지도통신식</li>
+          <li class="quiz-option">④ 지도식</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -961,6 +1469,19 @@
           <li>폐색장치에 고장이 있을 때에는 자동으로 정지신호를 현시할 것</li>
           <li>단선구간에 있어서는 하나의 방향에 대하여 진행을 지시하는 신호를 현시한 때에는 그 반대방향의 신호기는 자동으로 정지신호를 현시할 것</li>
         </ol>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제51조) 037</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 자동폐색식을 시행하는 폐색구간의 폐색신호기ㆍ장내신호기ㆍ출발신호기가 갖추어야 하는 기능으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 폐색구간에 열차 또는 차량이 있을 때에는 자동으로 정지신호를 현시할 것</li>
+          <li class="quiz-option">② 폐색구간에 있는 선로전환기가 정당한 방향으로 개통되지 아니한 때 또는 분기선 및 교차점에 있는 차량이 폐색구간에 지장을 줄 때에는 자동으로 정지신호를 현시할 것</li>
+          <li class="quiz-option">③ 폐색장치에 고장이 있을 때에는 자동으로 정지신호를 현시할 것</li>
+          <li class="quiz-option" data-correct="true">④ 복선구간에 있어서는 하나의 방향에 대하여 진행을 지시하는 신호를 현시한 때에는 그 반대방향의 신호기는 자동으로 정지신호를 현시할 것</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -977,6 +1498,19 @@
           <li>폐색구간에 진입한 열차가 그 구간을 통과한 후가 아니면 제1호가목의 표시를 변경할 수 없을 것</li>
           <li>단선구간에 있어서 하나의 방향에 대하여 폐색이 이루어지면 그 반대방향의 신호기는 자동으로 정지신호를 현시할 것</li>
         </ol>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제52조) 038</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 연동폐색장치의 구비조건으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 연동폐색식을 시행하는 폐색구간 양끝의 정거장 또는 신호소에는 연동폐색기를 설치하여야 한다.</li>
+          <li class="quiz-option">② 신호기와 연동하여 자동으로 열차폐색구간에 있음 또는 폐색구간에 열차없음의 표시를 할 수 있어야 한다.</li>
+          <li class="quiz-option" data-correct="true">③ 열차가 폐색구간에 있을 때에는 그 구간의 신호기에 정지를 지시하는 신호를 현시할 수 없을 것</li>
+          <li class="quiz-option">④ 폐색구간에 진입한 열차가 그 구간을 통과한 후가 아니면 "폐색구간에 열차있음"의 표시를 변경할 수 없을 것</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -1000,6 +1534,19 @@
         </ol>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제54조) 039</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 차내신호폐색장치의 기능으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 폐색구간에 열차 또는 다른 차량이 있는 경우 자동으로 정지신호를 현시해야한다.</li>
+          <li class="quiz-option">② 폐색구간에 있는 선로전환기가 정당한 방향에 있지 아니한 경우 자동으로 정지신호를 현시해야한다.</li>
+          <li class="quiz-option">③ 다른 선로에 있는 열차 또는 차량이 폐색구간을 진입하고 있는 경우 자동으로 정지신호를 현시해야한다.</li>
+          <li class="quiz-option" data-correct="true">④ 열차 운행선로의 방향이 대향인 경우 자동으로 정지신호를 현시해야한다.</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제55조 (통표폐색장치의 기능 등)</h3>
       <ul>
@@ -1012,6 +1559,19 @@
         <li>②제1항의 규정에 의한 통표폐색기에는 그 구간 전용의 통표만을 넣어야 한다.</li>
         <li>③인접폐색구간의 통표는 그 모양을 달리하여야 한다.</li>
         <li>④열차는 당해 구간의 통표를 휴대하지 아니하면 그 구간을 운전할 수 없다. 다만, 특별한 사유가 있는 경우에는 그러하지 아니하다.</li>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제55조) 040</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 통표폐색장치의 기능 등으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 통표는 폐색구간 양끝의 정거장 또는 신호소에서 협동하여 취급하지 아니하면 이를 꺼낼 수 없을 것</li>
+          <li class="quiz-option">② 폐색구간 양끝에 있는 통표폐색기에 넣은 통표는 1개에 한하여 꺼낼 수 있으며, 꺼낸 통표를 통표폐색기에 넣은 후가 아니면 다른 통표를 꺼내지 못하는 것일 것</li>
+          <li class="quiz-option" data-correct="true">③ 통표를 분실하지 않도록 취급할 때 기록을 할 것</li>
+          <li class="quiz-option">④ 인접 폐색구간의 통표는 넣을 수 없는 것일 것</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -1033,6 +1593,19 @@
         </ol>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제57조) 041</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 다른 통신설비로 대신할 수 있는 경우로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 운전이 한산한 구간인 경우</li>
+          <li class="quiz-option" data-correct="true">② 사전에 협의된 통신설비를 사용할 경우</li>
+          <li class="quiz-option">③ 전용의 통신설비에 고장이 있는 경우</li>
+          <li class="quiz-option">④ 철도사고등의 발생 그 밖에 부득이한 사유로 인하여 전용의 통신설비를 설치할 수 없는 경우</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제58조 (열차를 통신식 폐색구간에 진입시킬 경우의 취급)</h3>
       <ul>
@@ -1046,6 +1619,20 @@
         <li>①지도통신식을 시행하는 구간에는 폐색구간 양끝의 정거장 또는 신호소의 통신설비를 사용하여 서로 협의한 후 시행한다.</li>
         <li>②지도통신식을 시행하는 경우 폐색구간 양끝의 정거장 또는 신호소가 서로 협의한 후 지도표를 발행하여야 한다.</li>
         <li>③제2항의 규정에 의한 지도표는 1폐색구간에 1매로 한다.</li>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제59조) 042</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 &lt;보기&gt; &#9425;에 들어갈 내용으로 맞는 것은?</li>
+        <li class="highlight">지도통신식을 시행하는 구간에서 동일 방향의 폐색구간으로 진입시키고자 하는 열차가 하나뿐인 경우에는 (ⓐ)를 교부하고, 연속하여 2 이상의 열차를 동일방향의 폐색구간으로 진입시키고자 하는 경우에는 최후의 열차에 대하여는 (ⓑ)를(을), 나머지 열차에 대하여는 (ⓒ)을(를) 교부한다.</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 통표</li>
+          <li class="quiz-option" data-correct="true">② 지도표</li>
+          <li class="quiz-option">③ 지도권</li>
+          <li class="quiz-option">④ 통신표</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -1068,6 +1655,19 @@
       <ul>
         <li>①지도표에는 그 구간 양끝의 정거장명ㆍ발행일자 및 사용열차번호를 기입하여야 한다.</li>
         <li>②지도권에는 사용구간ㆍ사용열차ㆍ발행일자 및 지도표 번호를 기입하여야 한다.</li>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제62조) 043</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 지도표 기입사항으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 양끝의 정거장명</li>
+          <li class="quiz-option">② 발행일자</li>
+          <li class="quiz-option" data-correct="true">③ 지도권 번호</li>
+          <li class="quiz-option">④ 사용열차번호</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -1119,6 +1719,19 @@
         </ol>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제66조) 044</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 열차제어장치의 구분에 해당되지 않는 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 열차자동정지장치</li>
+          <li class="quiz-option" data-correct="true">② 열차자동운전장치</li>
+          <li class="quiz-option">③ 열차자동제어장치</li>
+          <li class="quiz-option">④ 열차자동방호장치</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제67조 (열차제어장치의 기능)</h3>
       <ul>
@@ -1129,6 +1742,19 @@
           <li>장치의 조작 화면에 열차제어정보에 따른 운전 속도와 열차의 실제 속도를 실시간으로 나타내 줄 것</li>
           <li>열차를 정지시켜야 하는 경우 자동으로 제동장치를 작동하여 정지목표에 정지할 수 있을 것</li>
         </ol>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제67조) 045</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 열차자동제어장치의 기능으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 운행 중인 열차를 선행열차와의 간격, 선로의 굴곡, 선로전환기 등 운행 조건에 따라 제어정보가 지시하는 속도로 자동으로 감속시키거나 정지시킬 수 있을 것</li>
+          <li class="quiz-option" data-correct="true">② 열차의 제어정보가 지시하는 운전속도로 자동으로 제동장치를 작용시켜 열차의 속도를 감속시킬 것. 다만, 지상설비의 제어정보가 열차의 정지를 지시하는 경우에는 지정위치에 열차가 정지할 수 있도록 제동장치를 작동시킬 것</li>
+          <li class="quiz-option">③ 장치의 조작 화면에 열차제어정보에 따른 운전 속도와 열차의 실제 속도를 실시간으로 나타내 줄 것</li>
+          <li class="quiz-option">④ 열차를 정지시켜야 하는 경우 자동으로 제동장치를 작동하여 정지목표에 정지 할 수 있을 것</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -1170,6 +1796,19 @@
         </ol>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제72조) 046</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 시계운전에 의한 열차의 운전에 대하여 맞는 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 복선운전을 하는 경우 지도격시법, 전령법으로 시행해야 한다.</li>
+          <li class="quiz-option">② 단선운전을 하는 경우 격시법, 전령법으로 시행해야 한다.</li>
+          <li class="quiz-option">③ 공사열차 운행 등 철도운영자등이 특별히 따로 정한 경우에는 그렇지 않다.</li>
+          <li class="quiz-option" data-correct="true">④ 단선구간에서는 하나의 방향으로 열차를 운전하는 때에 반대방향의 열차를 운전시키지 아니하는 등 사고예방을 위한 안전조치를 하여야 한다.</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제73조 (격시법 또는 지도격시법의 시행)</h3>
       <ul>
@@ -1201,6 +1840,19 @@
         <li>④전령법을 시행하는 구간에서는 당해구간의 전령자가 동승하지 아니하고는 열차를 운전할 수 없다.</li>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제75조) 047</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 전령자에 대하여 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 전령법을 시행하는 구간에는 전령자를 선정하여야 한다.</li>
+          <li class="quiz-option">② 전령자는 1폐색구간 1인에 한한다.</li>
+          <li class="quiz-option" data-correct="true">③ 전령자는 흰 바탕의 완장을 착용하여야 한다.</li>
+          <li class="quiz-option">④ 전령법을 시행하는 구간에서는 당해구간의 전령자가 동승하지 아니하고는 열차를 운전할 수 없다.</li>
+        </ul>
+      </ul>
+    </div>
   </div>
   <div class="law-section">
     <h2>제6장 철도신호</h2>
@@ -1214,6 +1866,19 @@
           <li>전호는 모양ㆍ색 또는 소리 등으로 관계직원 상호간에 의사를 표시하는 것으로 할 것</li>
           <li>표지는 모양 또는 색 등으로 물체의 위치ㆍ방향ㆍ조건 등을 표시하는 것으로 할 것</li>
         </ol>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제76조) 048</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 전호의 정의로 맞는 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 모양ㆍ색 또는 소리 등으로 열차나 차량에 대하여 운행의 조건을 지시하는 것으로 할 것</li>
+          <li class="quiz-option" data-correct="true">② 모양ㆍ색 또는 소리 등으로 관계직원 상호간에 의사를 표시하는 것으로 할 것</li>
+          <li class="quiz-option">③ 모양 또는 색 등으로 물체의 위치ㆍ방향ㆍ조건 등을 표시하는 것으로 할 것</li>
+          <li class="quiz-option">④ 모양 또는 색 등으로 현재 운행상태를 표시하는 것으로 할 것</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -1281,6 +1946,32 @@
         </ol>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제82조) 049</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 주 신호기가 아닌 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option" data-correct="true">① 원방신호기</li>
+          <li class="quiz-option">② 장내신호기</li>
+          <li class="quiz-option">③ 출발신호기</li>
+          <li class="quiz-option">④ 입환신호기</li>
+        </ul>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제82조) 050</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 종속신호기에 해당되지 않는 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 통과신호기</li>
+          <li class="quiz-option" data-correct="true">② 엄호신호기</li>
+          <li class="quiz-option">③ 중계신호기</li>
+          <li class="quiz-option">④ 원방신호기</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제83조 (차내신호)</h3>
       <ul>
@@ -1291,6 +1982,45 @@
           <li>야드신호：입환차량에 대한 신호로서 1시간에 25킬로미터 이하의 속도로 운전하게 하는 것</li>
           <li>진행신호：열차를 지정된 속도 이하로 운전하게 하는 것</li>
         </ol>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제83조) 051</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 차내신호의 종류 및 그 제한속도로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 정지신호: 열차운행에 지장이 있는 구간으로 운행하는 열차에 대하여 정지하도록 하는 것</li>
+          <li class="quiz-option">② 15신호: 정지신호에 의하여 정지한 열차에 대한 신호로서 1시간에 15킬로미터 이하의 속도로 운전하게 하는 것 </li>
+          <li class="quiz-option">③ 야드신호: 입환차량에 대한 신호로서 1시간에 25킬로미터 이하의 속도로 운전하게 하는 것</li>
+          <li class="quiz-option" data-correct="true">④ 진행신호: 열차를 정상속도로 운전하게 하는 것</li>
+        </ul>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제83조) 052</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 차내신호폐색구간 입환신호기 색등식 신호현시방법으로 맞는 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 정지신호 - 백색등열 수평, 무유도등 소등</li>
+          <li class="quiz-option">② 진행신호 - 백색등열 좌하향 45도 무유도 등 점등</li>
+          <li class="quiz-option" data-correct="true">③ 진행신호 - 등황색등</li>
+          <li class="quiz-option">④ 진행신호 - 청색등</li>
+        </ul>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제83조) 053</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 주 신호기가 정지신호를 할 경우 등열식 중계신호기의 현시방법으로 맞는 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option" data-correct="true">① 백색등열(3등) 수평</li>
+          <li class="quiz-option">② 백색등열(3등) 좌하향 45도</li>
+          <li class="quiz-option">③ 백색등열(3등) 우하향 45도</li>
+          <li class="quiz-option">④ 백색등열(3등) 수직</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -1519,6 +2249,32 @@
         <li>③차내신호는 진행신호를 현시함을 기본으로 한다.</li>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제85조) 054</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 신호현시의 기본원칙으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 출발신호기: 정지신호</li>
+          <li class="quiz-option">② 입환신호기: 정지신호</li>
+          <li class="quiz-option" data-correct="true">③ 원방신호기: 정지신호</li>
+          <li class="quiz-option">④ 장내신호기: 정지신호</li>
+        </ul>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제85조) 055</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 임시신호기의 현시방식으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 주간 서행신호: 백색 테두리를 한 등황색 원판</li>
+          <li class="quiz-option" data-correct="true">② 야간 서행예고신호: 흑색삼각형 3개를 그린 백색 삼각형등</li>
+          <li class="quiz-option">③ 야간 서행해제신호: 녹색등</li>
+          <li class="quiz-option">④ 서행신호기 및 서행예고신호기에는 서행속도를 표시하여야 한다.</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제86조 (배면광 설비)</h3>
       <ul>
@@ -1622,6 +2378,19 @@
         </ol>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제93조) 056</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 수신호의 현시방법으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 정지신호 주간: 적색기</li>
+          <li class="quiz-option" data-correct="true">② 서행신호 주간: 적색기와 녹색기를 번갈아 흔든다.</li>
+          <li class="quiz-option">③ 서행신호 야간: 깜빡이는 녹색등</li>
+          <li class="quiz-option">④ 진행신호 주간: 녹색기가 없을 때는 한 팔을 높이 든다.</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제94조 (선로에서 정상 운행이 어려운 경우의 조치)</h3>
       <ul>
@@ -1631,6 +2400,19 @@
           <li>열차를 정지시켜야 하는 경우: 철도사고등이 발생한 지점으로부터 200미터 이상의 앞 지점에서 정지 수신호를 현시할 것</li>
           <li>열차를 서행시켜야 하는 경우: 서행구역의 시작지점에서 서행수신호를 현시하고 서행구역이 끝나는 지점에서 진행수신호를 현시할 것</li>
         </ol>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제94조) 057</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 열차를 정지시켜야 하는 경우 정지수신호는 철도사고등이 발생한 지점으로부터 몇 미터 앞인가?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 100</li>
+          <li class="quiz-option" data-correct="true">② 200</li>
+          <li class="quiz-option">③ 300</li>
+          <li class="quiz-option">④ 400</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -1648,6 +2430,19 @@
       <h3>제98조 (전호현시)</h3>
       <ul>
         <li>열차 또는 차량에 대한 전호는 전호기로 현시하여야 한다. 다만, 전호기가 설치되어 있지 아니하거나 고장이 난 경우에는 수전호 또는 무선전화기로 현시할 수 있다.</li>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제98조) 058</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 전호에 대하여 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option" data-correct="true">① 열차 또는 차량에 대한 전호는 전호기로 현시하여야 한다. 다만, 전호기가 설치되어 있지 아니하거나 고장이 난 경우에는 수신호로 현시할 수 있다.</li>
+          <li class="quiz-option">② 열차를 출발시키고자 할 때에는 출발전호를 하여야 한다.</li>
+          <li class="quiz-option">③ 위험을 경고하는 경우에는 기관사는 기적전호를 하여야 한다.</li>
+          <li class="quiz-option">④ 비상사태가 발생한 경우 기관사는 기적전호를 하여야 한다.</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -1685,6 +2480,32 @@
         </ol>
       </ul>
     </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제101조) 059</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 입환전호 방법에 대한 설명으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 오너라 전호 주간: 녹색기를 좌우로 흔든다.</li>
+          <li class="quiz-option">② 가거라 전호 주간: 녹색기를 위ㆍ아래로 흔든다.</li>
+          <li class="quiz-option" data-correct="true">③ 서행 전호 주간: 적색기와 녹색기를 모아쥐고 머리 위에 높이 교차한다.</li>
+          <li class="quiz-option">④ 정지 전호 야간: 적색등</li>
+        </ul>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제101조) 060</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 무선전화기를 사용하여 입환전호를 할 수 있는 경우로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 무인역 또는 1인이 근무하는 역에서 입환하는 경우</li>
+          <li class="quiz-option">② 1인이 승무하는 동력차로 입환하는 경우</li>
+          <li class="quiz-option" data-correct="true">③ 선로전환기를 원격으로 제어하여 단순히 선로를 변경하기 위하여 입환하는 경우</li>
+          <li class="quiz-option">④ 지형 및 선로여건 등을 고려할 때 입환전호하는 작업자를 배치하기가 어려운 경우</li>
+        </ul>
+      </ul>
+    </div>
     <div class="law-article">
       <h3>제102조 (작업전호)</h3>
       <ul>
@@ -1703,6 +2524,19 @@
       <h3>제103조 (열차의 표지)</h3>
       <ul>
         <li>열차 또는 입환 중인 동력차는 표지를 게시하여야 한다.</li>
+      </ul>
+    </div>
+    <div class="question-block law-article">
+      <h3>💯예상문제 (제103조) 061</h3>
+      <p>난이도: 💙 < 💚 < 💛 < 🧡 < 💖</p>
+      <ul>
+        <li class="question-text" onclick="revealAnswer(this)">💚 다음 중 철도차량운전규칙 신호에 대한 설명으로 틀린 것은?</li>
+        <ul class="option-list">
+          <li class="quiz-option">① 여객 또는 화물의 취급을 위하여 정지위치를 지시할 때 전호의 방식을 정하여 그 전호에 따라 작업을 하여야 한다.</li>
+          <li class="quiz-option">② 신호기 취급직원 또는 입환전호를 하는 직원과 선로전환기취급 직원간에 선로전환기의 취급에 관한 연락을 할 때 전호의 방식을 정하여 그 전호에 따라 작업을 하여야 한다.</li>
+          <li class="quiz-option" data-correct="true">③ 열차 또는 입환 중인 작업원은 표지를 게시하여야 한다.</li>
+          <li class="quiz-option">④ 열차 또는 차량의 안전운전을 위하여 안전표지를 설치하여야 한다.</li>
+        </ul>
       </ul>
     </div>
     <div class="law-article">
@@ -1791,6 +2625,25 @@
     });
     function goBack() {
       window.location.href = 'index.html';
+    }
+    // 정답을 표시하는 함수
+    function revealAnswer(questionElement) {
+      // 현재 질문 블록(div)을 찾습니다.
+      const quizBlock = questionElement.closest('div');
+      if (!quizBlock) return;
+
+      // 이미 정답이 표시된 경우, 다시 클릭하면 숨기도록 토글합니다.
+      const currentCorrect = quizBlock.querySelector('li[data-correct="true"]');
+      if (currentCorrect && currentCorrect.classList.contains('correct-answer')) {
+        currentCorrect.classList.remove('correct-answer');
+      } else {
+        // 해당 질문 블록 내에서 data-correct="true" 속성을 가진 li 요소를 찾습니다.
+        const correctAnswer = quizBlock.querySelector('li[data-correct="true"]');
+        if (correctAnswer) {
+          // 정답 li에 'correct-answer' 클래스를 추가하여 색상을 변경합니다.
+          correctAnswer.classList.add('correct-answer');
+        }
+      }
     }
   </script>
 </body>

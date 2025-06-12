@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>초소형 LAN 케이블 라벨 생성기</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Inter 폰트 임포트 */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f3f4f6;
+      /* 회색 배경 */
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 16px;
+      /* 둥근 모서리 */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      /* 부드러운 그림자 */
+      padding: 30px;
+      width: 100%;
+      max-width: 900px;
+      /* 최대 너비 설정 */
+      margin-top: 20px;
+    }
+
+    .label-card {
+      position: relative;
+      background-color: #fcfcfc;
+      border: 1px solid #e5e7eb;
+      /* 연한 테두리 */
+      border-radius: 4px;
+      /* 더 작은 둥근 모서리 */
+      width: 8cm;
+      /* 라벨 너비 8cm */
+      height: 0.5cm;
+      /* 라벨 높이 0.5cm */
+      display: flex;
+      justify-content: center;
+      /* 가운데 정렬 */
+      align-items: center;
+      /* 세로 가운데 정렬 */
+      margin: 5px;
+      /* 라벨 간격 */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      /* 라벨 그림자 */
+      flex-shrink: 0;
+      /* 축소 방지 */
+      overflow: hidden;
+      /* 내용이 넘칠 경우 숨김 */
+      padding: 0 2mm;
+      /* 좌우 여백 최소화 */
+      box-sizing: border-box;
+      /* 패딩이 너비/높이에 포함되도록 */
+    }
+
+    .label-id {
+      font-size: 10px;
+      /* ID 글씨 크기 (0.5cm에 맞춤) */
+      font-weight: 700;
+      /* 굵게 */
+      color: #1a202c;
+      /* 진한 글씨 */
+      white-space: nowrap;
+      /* 줄바꿈 방지 */
+      overflow: hidden;
+      /* 넘치는 텍스트 숨김 */
+      text-overflow: ellipsis;
+      /* 넘치는 텍스트 ... 처리 */
+      line-height: 1;
+      /* 라인 높이 최소화 */
+      height: 100%;
+      /* 부모 요소에 맞춰 높이 확장 */
+      display: flex;
+      align-items: center;
+      /* 세로 가운데 정렬 */
+    }
+
+    .delete-button {
+      position: absolute;
+      top: 1px;
+      /* 상단에서 조금 내려오도록 */
+      right: 1px;
+      /* 오른쪽에서 조금 들어오도록 */
+      background-color: #ef4444;
+      /* 빨간색 배경 */
+      color: white;
+      border: none;
+      border-radius: 50%;
+      /* 원형 버튼 */
+      width: 14px;
+      /* 버튼 크기 축소 */
+      height: 14px;
+      /* 버튼 크기 축소 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 8px;
+      /* 버튼 텍스트 크기 축소 */
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+      transition: background-color 0.2s;
+    }
+
+    .delete-button:hover {
+      background-color: #dc2626;
+    }
+
+    /* 인쇄 시 스타일 */
+    @media print {
+      body {
+        background-color: #fff;
+        /* 인쇄 시 배경 제거 */
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 0;
+      }
+
+      .container {
+        box-shadow: none;
+        /* 인쇄 시 그림자 제거 */
+        border: none;
+        padding: 0;
+        max-width: none;
+        /* 최대 너비 제한 해제 */
+        margin: 0;
+      }
+
+      .input-section,
+      .buttons-section,
+      h1 {
+        display: none;
+        /* 입력 폼과 버튼 숨기기 */
+      }
+
+      #labelsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        /* 라벨이 화면에 맞게 줄바꿈 */
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 5mm;
+        /* 인쇄 여백 */
+        box-sizing: border-box;
+      }
+
+      .label-card {
+        box-shadow: none;
+        /* 인쇄 시 라벨 그림자 제거 */
+        border: 0.5px solid #ccc;
+        /* 인쇄 시 명확한 테두리 */
+        margin: 2mm;
+        /* 인쇄 시 라벨 간격 */
+      }
+
+      .delete-button {
+        display: none;
+        /* 인쇄 시 삭제 버튼 숨기기 */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">초소형 LAN 케이블 라벨 생성기</h1>
+
+    <!-- 입력 섹션 -->
+    <div class="input-section bg-gray-50 p-6 rounded-xl mb-8 border border-gray-200">
+      <p class="text-gray-700 text-sm mb-4">
+        이 라벨은 크기가 매우 작아 (세로 0.5cm) 가독성을 위해 <strong>케이블 ID만</strong> 인쇄됩니다.
+        '출발지'와 '목적지' 정보는 입력하셔도 라벨에 표시되지 않습니다.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div>
+          <label for="fromInput" class="block text-sm font-medium text-gray-700 mb-1">출발지 (FROM):</label>
+          <input type="text" id="fromInput"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            placeholder="예: 서버실 랙 1">
+        </div>
+        <div>
+          <label for="toInput" class="block text-sm font-medium text-gray-700 mb-1">목적지 (TO):</label>
+          <input type="text" id="toInput"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            placeholder="예: 워크스테이션 5">
+        </div>
+        <div>
+          <label for="idInput" class="block text-sm font-medium text-gray-700 mb-1">케이블 ID (필수):</label>
+          <input type="text" id="idInput"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            placeholder="예: LAN-001">
+        </div>
+      </div>
+      <!-- 버튼 섹션 -->
+      <div class="buttons-section flex justify-center space-x-4">
+        <button id="addLabelBtn"
+          class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200">
+          라벨 추가
+        </button>
+        <button id="clearAllBtn"
+          class="px-6 py-3 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 transition-all duration-200">
+          모두 지우기
+        </button>
+        <button id="printBtn"
+          class="px-6 py-3 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 transition-all duration-200">
+          인쇄
+        </button>
+      </div>
+    </div>
+
+    <!-- 라벨 컨테이너 -->
+    <div id="labelsContainer"
+      class="flex flex-wrap justify-center items-center gap-2 p-4 border border-dashed border-gray-300 rounded-lg min-h-[150px] bg-gray-50">
+      <p id="noLabelsMessage" class="text-gray-500 text-center">아직 생성된 라벨이 없습니다. 라벨을 추가해 보세요.</p>
+    </div>
+  </div>
+
+  <script>
+    // DOM 요소 가져오기
+    const fromInput = document.getElementById('fromInput');
+    const toInput = document.getElementById('toInput');
+    const idInput = document.getElementById('idInput');
+    const addLabelBtn = document.getElementById('addLabelBtn');
+    const clearAllBtn = document.getElementById('clearAllBtn');
+    const printBtn = document.getElementById('printBtn');
+    const labelsContainer = document.getElementById('labelsContainer');
+    const noLabelsMessage = document.getElementById('noLabelsMessage');
+
+    // 라벨 추가 함수
+    function addLabel() {
+      const idText = idInput.value.trim();
+
+      // 케이블 ID 필드가 채워져 있는지 확인
+      if (!idText) {
+        displayMessage("케이블 ID를 입력해주세요.");
+        return;
+      }
+
+      // '아직 생성된 라벨이 없습니다.' 메시지 숨기기
+      if (noLabelsMessage) {
+        noLabelsMessage.style.display = 'none';
+      }
+
+      // 새 라벨 카드 요소 생성
+      const labelCard = document.createElement('div');
+      labelCard.className = 'label-card'; // CSS 클래스 적용
+
+      // 라벨 내용 구성 (오직 케이블 ID만)
+      labelCard.innerHTML = `
+                <div class="label-id">${idText}</div>
+                <button class="delete-button" onclick="deleteLabel(this)">x</button>
+            `;
+
+      // 라벨 컨테이너에 추가
+      labelsContainer.appendChild(labelCard);
+
+      // 입력 필드 초기화
+      fromInput.value = '';
+      toInput.value = '';
+      idInput.value = '';
+    }
+
+    // 라벨 삭제 함수 (개별 라벨)
+    function deleteLabel(button) {
+      const labelCard = button.parentNode;
+      labelsContainer.removeChild(labelCard);
+
+      // 라벨이 없으면 메시지 다시 표시
+      if (labelsContainer.children.length === 0) {
+        noLabelsMessage.style.display = 'block';
+      }
+    }
+
+    // 모든 라벨 지우기 함수
+    function clearAllLabels() {
+      labelsContainer.innerHTML = ''; // 모든 자식 요소 제거
+      // '아직 생성된 라벨이 없습니다.' 메시지 다시 표시
+      noLabelsMessage.style.display = 'block';
+    }
+
+    // 인쇄 함수
+    function printLabels() {
+      window.print();
+    }
+
+    // 사용자 정의 메시지 박스 표시 함수 (alert 대체)
+    function displayMessage(message) {
+      // 간단한 메시지 박스 생성 및 표시
+      const messageBox = document.createElement('div');
+      messageBox.className = 'fixed top-5 left-1/2 -translate-x-1/2 bg-yellow-500 text-white px-5 py-3 rounded-lg shadow-lg z-50 transition-all duration-300 ease-out opacity-0';
+      messageBox.textContent = message;
+      document.body.appendChild(messageBox);
+
+      // 나타나는 애니메이션
+      setTimeout(() => {
+        messageBox.style.opacity = '1';
+        messageBox.style.transform = 'translate(-50%, 0)';
+      }, 10);
+
+      // 3초 후 사라지는 애니메이션 및 제거
+      setTimeout(() => {
+        messageBox.style.opacity = '0';
+        messageBox.style.transform = 'translate(-50%, -20px)';
+        messageBox.addEventListener('transitionend', () => messageBox.remove());
+      }, 3000);
+    }
+
+
+    // 이벤트 리스너 연결
+    addLabelBtn.addEventListener('click', addLabel);
+    clearAllBtn.addEventListener('click', clearAllLabels);
+    printBtn.addEventListener('click', printLabels);
+
+    // 엔터 키로 라벨 추가 (ID 입력 필드에서)
+    idInput.addEventListener('keypress', function (event) {
+      if (event.key === 'Enter') {
+        addLabel();
+      }
+    });
+  </script>
+</body>
+
+</html>
